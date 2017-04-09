@@ -115,6 +115,7 @@ function process_si_contact_form()
         $captcha = @$_POST['ct_captcha']; // the user's entry for the captcha code
         $name    = substr($name, 0, 64);  // limit name to 64 characters
 
+        
         $errors = array();  // initialize empty error array
 
         if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {

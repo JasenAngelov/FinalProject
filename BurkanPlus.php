@@ -51,11 +51,7 @@
 													maxlength="32" value="">
 											</div>
 											<!--CAPTCHA-->
-											<!--CAPTCHA-->
-											<div class="login-links">
-												<a class="show-dialog" id="passwordDialog" href="#">
-													Забравена парола ? </a>
-											</div>
+											<!--CAPTCHA-->											
 										</div>
 										<div class="column-right">
 											<div class="login-badge">
