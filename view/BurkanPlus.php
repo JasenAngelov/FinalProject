@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +11,16 @@
 	content="Портал за онлайн банкиране, Online banking portal">
 <meta name="author" content="Jasen & Kaloyan">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
-<link type="text/css" rel="stylesheet" href="./assets/css/login.css">
+<link type="text/css" rel="stylesheet" href="../assets/css/login.css">
 
 </head>
 
 <body>
-	<form id="m_Form" method="post" style="margin: 0px" action="./LogIn.php">
+	<form id="m_Form" method="post" style="margin: 0px"
+		action="./LogIn.php">
 		<div id="container" class="login">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="wide">
@@ -38,8 +35,8 @@
 								</div>
 								<div class="login-drop">
 									<div class="login-heading">
-										Вход в <strong> Burkan Bank Plus </strong> <input type="hidden"
-											name="processlogin" value="true">
+										Вход в <strong> Burkan Bank Plus </strong> <input
+											type="hidden" name="processlogin" value="true">
 										<div class="subheading">Изход успешен</div>
 									</div>
 									<div class="clearfix">
@@ -51,7 +48,7 @@
 													maxlength="32" value="">
 											</div>
 											<!--CAPTCHA-->
-											<!--CAPTCHA-->											
+											<!--CAPTCHA-->
 										</div>
 										<div class="column-right">
 											<div class="login-badge">
@@ -62,8 +59,7 @@
 									</div>
 									<div class="login-drop-footer">
 										<div class="login-btns">
-											<button class="btn" type="submit" name="submith">
-												Продължи</button>
+											<button class="btn" type="submit" name="submith">Продължи</button>
 										</div>
 										<div class="mini-text">Всички транзакции са защитени
 											посредством 256-bit SSL криптиране</div>
@@ -82,7 +78,7 @@
 						</div>
 						<!--ADDITIONAL_MESSAGE-->
 						<!--/////ADDITIONAL_MESSAGE-->
-					</section>					
+					</section>
 					<div class="dialog-container"></div>
 				</div>
 			</div>
@@ -97,15 +93,16 @@
 					<li><a target="_blank" href="">Препоръки за сигурност</a></li>
 					<li><div class="def_control_CurrentCCY">
 							<span style="text-transform: uppercase"
-								class="def_control_CurrentCCY">Валутни курсове:<span class="flaticon-storage"></span> &nbsp;EUR 1.955830&nbsp; USD
+								class="def_control_CurrentCCY">Валутни курсове:<span
+								class="flaticon-storage"></span> &nbsp;EUR 1.955830&nbsp; USD
 								1.834570&nbsp; GBP 2.293960&nbsp;
 							</span>
-							
+
 						</div></li>
 					<li><a class="userguide">EN</a></li>
 				</ul>
 			</div>
 		</footer>
-	</form>	
+	</form>
 </body>
 </html>

@@ -43,7 +43,7 @@ process_si_contact_form();
 
 
   <p>
-    <?php require_once 'securimage.php'; echo Securimage::getCaptchaHtml(array('input_name' => 'ct_captcha')); ?>
+    <?php require_once '../../assets/securimage/securimage.php'; echo Securimage::getCaptchaHtml(array('input_name' => 'ct_captcha')); ?>
   </p>
 
   <p>

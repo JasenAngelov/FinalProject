@@ -22,8 +22,8 @@ if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
 	content="Портал за онлайн банкиране, Online banking portal">
 <meta name="author" content="Jasen & Kaloyan">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
-<link type="text/css" rel="stylesheet" href="./assets/css/login.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
+<link type="text/css" rel="stylesheet" href="../assets/css/login.css">
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 </head>
@@ -116,9 +116,10 @@ if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
 		<footer id="footer">
 			<div class="wrap" style="cursor: pointer">
 				<ul>
-					<li><span class="copyright">© Burkan Bank • 2017</span></li>
-					<li><a class="userguide" href="">Потребителско ръководство</a></li>
-					<li><a href="">Препоръки за сигурност</a></li>
+					<li><span class="copyright">© BACB • 2017</span></li>
+					<li><a target="_blank" class="userguide" href="">Потребителско
+							ръководство</a></li>
+					<li><a target="_blank" href="">Препоръки за сигурност</a></li>
 					<li><div class="def_control_CurrentCCY">
 							<span style="text-transform: uppercase"
 								class="def_control_CurrentCCY">Валутни курсове:<span
@@ -220,8 +221,7 @@ if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
 
 							</div>
 							<input id="Captcha_EncodedCode" name="Captcha.EncodedCode"
-								type="hidden"
-								value="">
+								type="hidden" value="">
 							<div class="column">
 								<img id="Captcha_Image" src="./" alt="">
 
