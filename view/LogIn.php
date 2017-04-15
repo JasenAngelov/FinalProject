@@ -1,10 +1,20 @@
 <?php
 // -=-=-=-=-=--=-=-=-=--=-==--==-=-=Comming validation=-=-=-=-=-=-=-=---==-=-=-\\
-if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
+session_start();
+function __autoload($className) {
+	require_once '../model/' . $className . ".php";
+}
+
+
+if (isset($_SESSION['userName'])){
 	
-	$userName = $_POST ['userName'];
-} else {
-	header ( 'Location: ./BurkanPlus.php' );
+	$userName = $_SESSION['userName'];
+	
+	if (isset($_SESSION['log_ini'])){
+		
+		$info = $_SESSION['log_ini'];
+		
+	}
 }
 
 ?>
@@ -22,8 +32,8 @@ if (isset ( $_POST ['submith'] ) && ! empty ( $_POST ['userName'] )) {
 	content="Портал за онлайн банкиране, Online banking portal">
 <meta name="author" content="Jasen & Kaloyan">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
-<link type="text/css" rel="stylesheet" href="../assets/css/login.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
+<link type="text/css" rel="stylesheet" href="./assets/css/login.css">
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 </head>

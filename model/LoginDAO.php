@@ -13,11 +13,9 @@ class LoginDAO {
 		$info = $pstmt->fetch( PDO::FETCH_ASSOC );
 		
 		
-		if (!empty ( $info)) {
-			
+		if (!empty ( $info)) {			
 			return new Login($info['id'], $info['login_pass']);
-		}
-		
+		}		
 		return false;
 	}
 }

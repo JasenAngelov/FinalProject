@@ -1,3 +1,19 @@
+<?php
+session_start ();
+
+if (isset ( $_SESSION ['error'] )) {
+	$error = $_SESSION ['error'];
+	unset($_SESSION ['error']);
+} else {
+	$error = '';
+}
+
+$mesage = "<div class='subheading' style ='color: #fdb206'>$error</div>";
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,18 +30,17 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/flaticon.css">
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
-<link type="text/css" rel="stylesheet" href="../assets/css/login.css">
+<link type="text/css" rel="stylesheet" href="./assets/css/login.css">
 
 </head>
 
 <body>
 	<form id="m_Form" method="post" style="margin: 0px"
-		action="./LogIn.php">
+		action="../controller/LoginControler.php">
 		<div id="container" class="login">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="wide">
 					<section class="contentarea"></section>
-
 					<input type="hidden" name="userTime" id="userTime">
 					<section>
 						<div class="login_wrap">
@@ -35,10 +50,9 @@
 								</div>
 								<div class="login-drop">
 									<div class="login-heading">
-										Вход в <strong> Burkan Bank Plus </strong> <input
-											type="hidden" name="processlogin" value="true">
-										<div class="subheading">Изход успешен</div>
+										Вход в <strong> Burkan Bank Plus </strong> 										
 									</div>
+									<?PHP echo $mesage?>
 									<div class="clearfix">
 										<div class="column-left">
 											<div class="login-input-group">
