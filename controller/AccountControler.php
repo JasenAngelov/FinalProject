@@ -1,10 +1,8 @@
 <?php
+session_start();
 function __autoload($className){
 	require_once '../model/' .$className.".php";
 }
-
-
-session_start();
 
 
 if (isset($_SESSION['client'])) {

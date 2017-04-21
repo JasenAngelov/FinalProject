@@ -19,6 +19,7 @@
 	text-decoration: none;
 	font-size: 100%;
 	list-style: none;
+	
 }
 
 .ui-helper-clearfix:before, .ui-helper-clearfix:after {
@@ -195,6 +196,7 @@
 .ui-state-error-text, .ui-widget-content .ui-state-error-text,
 	.ui-widget-header .ui-state-error-text {
 	color: #cd0a0a;
+	
 }
 
 .ui-priority-primary, .ui-widget-content .ui-priority-primary,

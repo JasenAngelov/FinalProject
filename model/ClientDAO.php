@@ -1,8 +1,9 @@
 <?php
 
 class ClientDAO {
-	private $db;
+	private $db;	
 	const GET_CLIENT_INFO_SQL = 'SELECT id, first_name, last_name, user_email, user_phone FROM users WHERE login_name = ? AND login_pass = ?';
+	
 	public function __construct() {
 		$this->db = DBConnection::getDb ();
 	}
@@ -16,6 +17,7 @@ class ClientDAO {
 		$client_info = $pstmt->fetchAll ( PDO::FETCH_ASSOC );
 		
 		if (empty ( $client_info )) {
+			
 			
 			throw new Exception ( 'Wrong username or password' );
 		}

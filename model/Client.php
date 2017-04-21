@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * 
+ * @author Jasen
+ *
+ */
 class Client implements JsonSerializable {
 	private $id;
 	private $first_name;
@@ -23,8 +29,13 @@ class Client implements JsonSerializable {
 	public function __get($prop) {
 		return $this->$prop;
 	}
+	private function decode($data) {
+	}
 }
 
 
+
+
+?>
 
 

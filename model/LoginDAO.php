@@ -2,7 +2,9 @@
 
 class LoginDAO {
 	private $db;
+	
 	const GET_INI_INFO_SQL = 'SELECT id, login_pass FROM users WHERE login_name = ?';
+	
 	public function __construct() {
 		$this->db = DBConnection::getDb ();
 	}

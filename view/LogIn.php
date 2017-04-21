@@ -1,19 +1,20 @@
 <?php
 // -=-=-=-=-=--=-=-=-=--=-==--==-=-=Comming validation=-=-=-=-=-=-=-=---==-=-=-\\
-session_start();
+session_start ();
 function __autoload($className) {
 	require_once '../model/' . $className . ".php";
 }
 
+$check = new Control_functions ();
+$check->Check_connection_protocol ();
 
-if (isset($_SESSION['userName'])){
+if (isset ( $_SESSION ['userName'] )) {
 	
-	$userName = $_SESSION['userName'];
+	$userName = $_SESSION ['userName'];
 	
-	if (isset($_SESSION['log_ini'])){
+	if (isset ( $_SESSION ['log_ini'] )) {
 		
-		$info = $_SESSION['log_ini'];
-		
+		$info = $_SESSION ['log_ini'];
 	}
 }
 
@@ -143,27 +144,26 @@ if (isset($_SESSION['userName'])){
 			</div>
 		</footer>
 	</form>
-	<div id="forgoten" style="visibility: hidden;">
-		<div
-			class="ui-dialog ui-widget ui-widget-content ui-corner-all dialogfooter"
-			tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1"
-			style="display: block; z-index: 1002; outline: 0px; height: auto; width: 650px; top: 222px; left: 375.5px;">
-			<div
-				class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-				<span class="ui-dialog-title" id="ui-dialog-title-1">Забравена
-					парола</span><a href="#"
-					class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
-					class="ui-icon ui-icon-closethick">close</span></a>
-			</div>
-			<div class="ui-dialog-content ui-widget-content"
-				style="width: auto; min-height: 0px; height: 196px;" scrolltop="0"
-				scrollleft="0">
+	<form action="" method="post" style="display: none;">
+		<div id="forgotPassword" class="pmt_doc_wrap">
+			<div id="forgoten" style="visibility: hidden;">
+				<div
+					class="ui-dialog ui-widget ui-widget-content ui-corner-all dialogfooter"
+					tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1"
+					style="display: block; z-index: 1002; outline: 0px; height: auto; width: 650px; top: 222px; left: 375.5px;">
+					<div
+						class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+						<span class="ui-dialog-title" id="ui-dialog-title-1">Забравена
+							парола</span><a href="#"
+							class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+							class="ui-icon ui-icon-closethick">close</span></a>
+					</div>
+					<div class="ui-dialog-content ui-widget-content"
+						style="width: auto; min-height: 0px; height: 196px;" scrolltop="0"
+						scrollleft="0">
 
 
-				<form
-					action="/individual/mvc/ForgotPassword/Index?xml_id=%2Fbg-BG%2F&amp;ajaxRequest=true"
-					method="post">
-					<div id="forgotPassword" class="pmt_doc_wrap">
+
 						<p class="note" style="padding: 1em; text-align: justify;">В
 							случай на забравена парола, тя може да бъде сменена онлайн чрез
 							подаване на долната заявка и подписването й с КЕП, Е-ТАН или
@@ -250,14 +250,10 @@ if (isset($_SESSION['userName'])){
 
 					</div>
 
-					<input type="hidden" name="as_sfid"
-						value="AAAAAAUCeI6_OXUS2uoQwcGhDS2-_X_wpN5itz0-oKR8xkjKU9N8ADFo1pcjA5mIiELQe7TVZ3XG62S5sWAyjaCJazDezisPwM2KVO1xEyD-3YJSbchzUagGlAbQExZ0PLw47hw="><input
-						type="hidden" name="as_fid"
-						value="79924397c8966aaf493fc3686e960fa28bf59a17">
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<script type="text/javascript" src="./assets/js/functions.js"></script>
 </body>
 </html>

@@ -24,4 +24,3 @@ class AccountDAO {
 	}
 }
 
-var_dump(hash_algos());
