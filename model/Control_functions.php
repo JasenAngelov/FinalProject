@@ -7,4 +7,17 @@ class Control_functions {
 		}
 		
 	}
+	
+	public function errorMessage_and_header($message){
+		
+		 function ($message){
+			return $_SESSION ['error'] = $message;
+		};
+		 function (){
+			return http_response_code ( 401 );
+		};
+		 function (){
+			return header ( "Location: ../view/BurkanPlus.php" );
+		};
+	}
 }

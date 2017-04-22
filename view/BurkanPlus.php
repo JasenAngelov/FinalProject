@@ -42,7 +42,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 
 <body>
 	<form id="m_Form" method="post" style="margin: 0px"
-		action="../controller/LoginControler.php">
+		action="../controller/AccountControler.php">
 		<div id="container" class="login">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="wide">
@@ -109,8 +109,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 									</div>
 									<div class="login-drop-footer">
 										<div class="login-btns">
-											<button class="btn" type="submit"
-												onclick="setCurrentTime('userTime');">вход</button>
+											<button class="btn" type="submit" name="submit">вход</button>
 										</div>
 										<div class="mini-text">Всички транзакции са защитени
 											посредством 256-bit SSL криптиране</div>
