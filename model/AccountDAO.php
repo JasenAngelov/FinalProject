@@ -30,5 +30,8 @@ FROM users u LEFT JOIN accounts a ON u.id = a.users_id LEFT JOIN currency_type c
 		}
 		
 	}
+	public function password_check ($pass, $hash){
+		return password_verify($pass, $hash);
+	}
 }
 

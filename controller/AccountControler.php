@@ -11,7 +11,11 @@ function __autoload($className) {
 }
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
+
 try {
+	$error = '';
+	$flag = false;
+	
 	if (isset ( $_POST ['submit'] )) {
 		if (mb_strlen ( $_POST ['userName'] ) > 0 && mb_strlen ( $_POST ['pwd'] ) > 0) {
 			$username = htmlentities ( trim ( $_POST ['userName'] ) );
@@ -24,30 +28,38 @@ try {
 			}
 			if (is_object ( $info )) {
 				
-				$dao = new AccountDAO ();
-				$accounts = $dao->request_info ( $info->username, $info->password, $key );
+				$hash = $info->password;
 				
-				$_SESSION ['acount'] = $accounts;
+				$dao = new AccountDAO ();
+				
+				if ($dao->password_check ( $userpass, $info->password )) {
+					
+					$accounts = $dao->request_info ( $info->username, $info->password, $key );
+					$_SESSION ['acount'] = $accounts;
+				} else {
+					$error = "Грешно име или парола!";
+					$flag = true;
+				}
 			}
-			
 		} else {
-			$_SESSION ['error'] = "Моля въведете коректни данни!";
-			http_response_code ( 401 );
-			header ( "Location: ../view/BurkanPlus.php" );
-			exit ();
+			$error = "Моля въведете коректни данни!";
+			$flag = true;
 		}
-	}else {
-		$_SESSION ['error'] = "Моля влезте в профила си!";
+	} else {
+		$error = "Моля влезте в профила си!";
+		$flag = true;
+	}
+	if ($flag) {
+		$_SESSION ['error'] = $error;
 		http_response_code ( 401 );
 		header ( "Location: ../view/BurkanPlus.php" );
 		exit ();
 	}
-}
- catch ( Exception $e ) {
-	$_SESSION ['error'] = $e->message;
+} catch ( Exception $e ) {
+	echo $_SESSION ['error'] = $e->message;
 	http_response_code ( 401 );
 	header ( "Location: ../view/BurkanPlus.php" );
 	exit ();
- }
-
+}
+pas
 ?>
