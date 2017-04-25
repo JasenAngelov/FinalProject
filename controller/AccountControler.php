@@ -14,9 +14,9 @@ function __autoload($className) {
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
 
-// $_POST ['userName'] = "Dobri123";
-// $_POST ['pwd'] = "772517";
-// $_POST ['submit'] = true;
+$_POST ['userName'] = "Dobriaa123";
+$_POST ['pwd'] = "772517";
+$_POST ['submit'] = true;
 
 try {
 	$error = '';
@@ -42,8 +42,8 @@ try {
 					
 					$accounts = $dao->request_info ( $info->username, $info->password, $key );
 					$_SESSION ['acount'] = $accounts;					
-					$perfix = $accounts->perfix;
-					$iban = $accounts->rawIban;
+					$perfix = $accounts[0]->perfix;
+					$iban = $accounts[0]->rawIban;
 					
 // Създаване на обект, съдържащ информация за транзакциите на клиента (Ако клиента няма транзакции връща folse)					
 					
@@ -79,6 +79,6 @@ try {
 	exit ();
 }
 
-// var_dump($_SESSION['acount']);
+print_r($_SESSION['acount']);
 
 ?>

@@ -1,7 +1,7 @@
 <?php
-// function __autoload($className) {
-// 	require_once '../model/' . $className . ".php";
-// }
+function __autoload($className) {
+	require_once '../model/' . $className . ".php";
+}
 class CreateuserDAO {
 	private $db;
 	
@@ -66,9 +66,13 @@ class CreateuserDAO {
 				$longIV 
 		) );
 		
+		
 		$user_id = $this->db->lastInsertId();
 		$randN = rand(100000000, 999999999);
-		$iban = str_pad($user_id, 10, $randN, STR_PAD_RIGHT);
+		$accaoutNumber = str_pad($user_id, 10, $randN, STR_PAD_RIGHT);
+		
+		$generator = new IBANGenerator($accaoutNumber);
+		$iban = $generator->generate();
 		
 		$encIBAN = openssl_encrypt ( $iban, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
 		
@@ -93,8 +97,8 @@ class CreateuserDAO {
 		}
 	}
 }
-// $us = new CreateuserDAO();
-// $us->create_user('Dobri', 'Ivanov', 'Dobraai@abv.bg', '0144100', 'Dobriaa123', '772517', 'BGN', '150');
+$us = new CreateuserDAO();
+$us->create_user('Dobri', 'Ivanov', 'Dobraai@abv.bg', '0144100', 'Dobriaa123', '772517', 'BGN', '150');
 
 
 

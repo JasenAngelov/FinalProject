@@ -1,7 +1,7 @@
 <?php
 class IBANGenerator {
 
-    protected $bankCode;
+    protected $bankCode = 'BBBG';
     protected $locale = 'BG';
     protected $bankAccountNr;
 
@@ -12,9 +12,9 @@ class IBANGenerator {
      * @param type $bankAccountNr
      * @param type $locale 
      */
-    function __construct($bankCode, $bankAccountNr, $locale = 'BG') {
+    function __construct($bankAccountNr, $locale = 'BG') {
         $this->locale = $locale;
-        $this->bankCode = $bankCode;
+        $this->bankCode = 'BBBG';
         $this->bankAccountNr = $bankAccountNr;
     }
     

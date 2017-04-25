@@ -13,7 +13,7 @@ private $db;
 		
 		$hashkey = hash('sha512', $key, true);
 		
-		$pstmt = $this->db->prepare ( self::GET_ACCOUNT_INFO_SQL );
+		$pstmt = $this->db->prepare ( self::GET_ALL_TRANSACTIONS_SQL);
 		
 		$pstmt->execute ( array ($iban , $iban) );
 	
@@ -21,7 +21,7 @@ private $db;
 		$result = array ();
 		
 		foreach ( $accounts as $account ) {
-			$result [] = new Transactions( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5], $account [6], $hashkey, $perfix);
+			$result [] = new Transactions( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5],  $hashkey, $perfix);
 		}
 		if (!empty($result)) {
 			return $result;
