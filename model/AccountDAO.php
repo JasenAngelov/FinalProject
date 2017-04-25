@@ -12,7 +12,7 @@ FROM users u LEFT JOIN accounts a ON u.id = a.users_id LEFT JOIN currency_type c
 	}
 	public function request_info($login_name, $Login_pass, $key) {
 		
-		$hashkey = hash('sha256', $key, true);
+		$hashkey = hash('sha512', $key, true);
 		
 		$pstmt = $this->db->prepare ( self::GET_ACCOUNT_INFO_SQL );
 		$pstmt->execute ( array ($login_name, $Login_pass) );

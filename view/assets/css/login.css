@@ -1,5 +1,17 @@
 /* Layout helpers
 ----------------------------------*/
+.js div#preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	background: #333 url('http://files.mimoymima.com/images/loading.gif')
+		no-repeat center center;
+}
+
 .ui-helper-hidden {
 	display: none;
 }
@@ -19,7 +31,6 @@
 	text-decoration: none;
 	font-size: 100%;
 	list-style: none;
-	
 }
 
 .ui-helper-clearfix:before, .ui-helper-clearfix:after {
@@ -93,7 +104,7 @@
 
 .ui-widget-content {
 	border: 1px solid #cccccc;
-	background: #ffffff url(images/ui-bg_flat_100_ffffff_40x100.png) 50% 50%
+	background: #ffffff url(../images/ui-bg_flat_100_ffffff_40x100.png) 50% 50%
 		repeat-x;
 	color: #333333;
 }
@@ -104,7 +115,7 @@
 
 .ui-widget-header {
 	border: 1px solid #cccccc;
-	background: #3db2c4 url(images/ui-bg_flat_100_3db2c4_40x100.png) 50% 50%
+	background: #3db2c4 url(../images/ui-bg_flat_100_3db2c4_40x100.png) 50% 50%
 		repeat-x;
 	color: #ffffff;
 	font-weight: bold;
@@ -119,7 +130,7 @@
 .ui-state-default, .ui-widget-content .ui-state-default,
 	.ui-widget-header .ui-state-default {
 	border: 1px solid #ffffff;
-	background: #cae4e8 url(images/ui-bg_flat_100_cae4e8_40x100.png) 50% 50%
+	background: #cae4e8 url(../images/ui-bg_flat_100_cae4e8_40x100.png) 50% 50%
 		repeat-x;
 	font-weight: bold;
 	color: #636363;
@@ -135,7 +146,7 @@
 	.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus
 	{
 	border: 1px solid #ffffff;
-	background: #afd7dc url(images/ui-bg_flat_50_afd7dc_40x100.png) 50% 50%
+	background: #afd7dc url(../images/ui-bg_flat_50_afd7dc_40x100.png) 50% 50%
 		repeat-x;
 	font-weight: bold;
 	color: #ffffff;
@@ -149,7 +160,7 @@
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
 	{
 	border: 1px solid #ffffff;
-	background: #3db2c4 url(images/ui-bg_flat_100_3db2c4_40x100.png) 50% 50%
+	background: #3db2c4 url(../images/ui-bg_flat_100_3db2c4_40x100.png) 50% 50%
 		repeat-x;
 	font-weight: bold;
 	color: #ffffff;
@@ -170,7 +181,7 @@
 .ui-state-highlight, .ui-widget-content .ui-state-highlight,
 	.ui-widget-header .ui-state-highlight {
 	border: 1px solid #fad42e;
-	background: #fbec88 url(images/ui-bg_flat_55_fbec88_40x100.png) 50% 50%
+	background: #fbec88 url(../images/ui-bg_flat_55_fbec88_40x100.png) 50% 50%
 		repeat-x;
 	color: #363636;
 }
@@ -183,7 +194,7 @@
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error
 	{
 	border: 1px solid #cd0a0a;
-	background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50%
+	background: #fef1ec url(../images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50%
 		repeat-x;
 	color: #cd0a0a;
 }
@@ -196,7 +207,6 @@
 .ui-state-error-text, .ui-widget-content .ui-state-error-text,
 	.ui-widget-header .ui-state-error-text {
 	color: #cd0a0a;
-	
 }
 
 .ui-priority-primary, .ui-widget-content .ui-priority-primary,
@@ -225,35 +235,35 @@
 .ui-icon {
 	width: 16px;
 	height: 16px;
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-content .ui-icon {
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-header .ui-icon {
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-default .ui-icon {
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-active .ui-icon {
-	background-image: url(images/ui-icons_ffffff_256x240.png);
+	background-image: url(../images/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-highlight .ui-icon {
-	background-image: url(images/ui-icons_2e83ff_256x240.png);
+	background-image: url(../images/ui-icons_2e83ff_256x240.png);
 }
 
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
-	background-image: url(images/ui-icons_cd0a0a_256x240.png);
+	background-image: url(../images/ui-icons_cd0a0a_256x240.png);
 }
 
 /* positioning */
@@ -987,7 +997,7 @@
 
 /* Overlays */
 .ui-widget-overlay {
-	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
+	background: #aaaaaa url(../images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
 		repeat-x;
 	opacity: .30;
 	filter: Alpha(Opacity = 30);
@@ -996,7 +1006,7 @@
 .ui-widget-shadow {
 	margin: -8px 0 0 -8px;
 	padding: 8px;
-	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
+	background: #aaaaaa url(../images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50%
 		repeat-x;
 	opacity: .30;
 	filter: Alpha(Opacity = 30);
@@ -1442,7 +1452,7 @@ button.ui-button::-moz-focus-inner {
 	padding: .2em;
 	zoom: 1;
 }
-	/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .ui-tabs .ui-tabs-nav {
 	margin: 0;
 	padding: .2em .2em 0;
@@ -1479,7 +1489,7 @@ button.ui-button::-moz-focus-inner {
 	{
 	cursor: pointer;
 }
-	/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
 .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
@@ -1743,10 +1753,24 @@ audio, canvas, video {
 	*zoom: 1;
 }
 
-audio:not ([controls] ) {
-	display: none;
-}
+audio
+:not
+ 
+(
+[
+controls
+]
+ 
+)
+{
+display
+:
+ 
+none
+;
 
+
+}
 [hidden] {
 	display: none;
 }
@@ -1920,8 +1944,21 @@ img {
 	vertical-align: middle;
 }
 
-svg:not (:root ) {
-	overflow: hidden;
+svg
+:not
+ 
+(
+:root
+ 
+)
+{
+overflow
+:
+ 
+hidden
+;
+
+
 }
 
 /* =============================================================================
@@ -1981,12 +2018,12 @@ a.radio {
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	padding: 10px;
-	background-image: url('/images/radioff.png');
+	background-image: url('../images/radioff.png');
 	cursor: pointer;
 }
 
 a.radio.on {
-	background: url('/images/radion.png') no-repeat 50% 50%;
+	background: url('../images/radion.png') no-repeat 50% 50%;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -2106,7 +2143,7 @@ body {
 	width: 100%;
 	min-height: 100%;
 	/*xmas comments - comment if XMAS*/
-	background-image: url('/images/logoEndless.png');
+	background-image: url('../images/logoEndless.png');
 	background-position: 66% 108px;
 	background-repeat: no-repeat;
 	background-color: #FFFFFF;
@@ -2157,7 +2194,7 @@ body {
 /*xmas comments - comment if XMAS*/
 #container.mbCorp, #container.corpCont {
 	background-color: #EDEDED;
-	background-image: url('/images/endlessCorp.png');
+	background-image: url('../images/endlessCorp.png');
 	background-position: 66% 108px;
 }
 /*xmas comments*/
@@ -2186,7 +2223,7 @@ body.ie7 .wrap {
 
 nav.topnavig {
 	background-color: #D1D1D1;
-	background-image: url('/images/bg_navig.jpg');
+	background-image: url('../images/bg_navig.jpg');
 	background-position: left top;
 	background-repeat: repeat-x;
 	width: 100%;
@@ -2219,7 +2256,7 @@ nav.topnavig ul li:first-child a {
 }
 
 nav.topnavig ul li.active {
-	background-image: url("/images/navig_active.png");
+	background-image: url("../images/navig_active.png");
 	background-position: 168px 0;
 	background-repeat: no-repeat;
 	overflow: visible;
@@ -2259,12 +2296,10 @@ nav#mainnav {
 	z-index: 5;
 }
 
-#menu0.en {
-	background: url(/images/navig/en/1.png) no-repeat 50% 50%;
-}
+
 
 #menu0.bg {
-	background: url(/images/navig/bg/1.png) no-repeat 50% 50%;
+	background: url(../images/1.png) no-repeat 50% 50%;
 }
 
 #menuh0 {
@@ -2276,12 +2311,10 @@ nav#mainnav {
 	display: none;
 }
 
-#menuh0.en {
-	background: url(/images/navig/en/0h.png) no-repeat 50% 50%;
-}
+
 
 #menuh0.bg {
-	background: url(/images/navig/bg/0h.png) no-repeat 50% 50%;
+	background: url(../images/0h.png) no-repeat 50% 50%;
 }
 
 #menuh0 a.mgreen:link, #menuh0 a.mgreen:visited, #menuh0 a.mgreen:active,
@@ -2300,7 +2333,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 56px;
 	text-decoration: none;
-	background: url(/images/navig/mgreen.png) no-repeat 0 0;
+	background: url(../images/mgreen.png) no-repeat 0 0;
 }
 
 #menuh0 a.mblue:link, #menuh0 a.mblue:visited, #menuh0 a.mblue:active,
@@ -2319,7 +2352,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mblue.png) no-repeat 0 0;
+	background: url(../images/mblue.png) no-repeat 0 0;
 }
 
 #menuh0 a.myellow:link, #menuh0 a.myellow:visited, #menuh0 a.myellow:active,
@@ -2338,7 +2371,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 56px;
 	text-decoration: none;
-	background: url(/images/navig/myellow.png) no-repeat 0 0;
+	background: url(../images/myellow.png) no-repeat 0 0;
 }
 
 #menuh0 a.mpurple:link, #menuh0 a.mpurple:visited, #menuh0 a.mpurple:active,
@@ -2357,7 +2390,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mpurple.png) no-repeat 0 0;
+	background: url(../images/mpurple.png) no-repeat 0 0;
 }
 
 /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
@@ -2369,12 +2402,10 @@ nav#mainnav {
 	z-index: 5;
 }
 
-#menu1.en {
-	background: url(/images/navig/en/2.png) no-repeat 50% 50%;
-}
+
 
 #menu1.bg {
-	background: url(/images/navig/bg/2.png) no-repeat 50% 50%;
+	background: url(../images/2.png) no-repeat 50% 50%;
 }
 
 #menuh1 {
@@ -2387,11 +2418,11 @@ nav#mainnav {
 }
 
 #menuh1.en {
-	background: url(/images/navig/en/1h.png) no-repeat 50% 50%;
+	background: url(../images/1h.png) no-repeat 50% 50%;
 }
 
 #menuh1.bg {
-	background: url(/images/navig/bg/1h.png) no-repeat 50% 50%;
+	background: url(../images/1h.png) no-repeat 50% 50%;
 }
 
 #menuh1.bg a.mgreen:link, #menuh1.bg a.mgreen:visited, #menuh1.bg a.mgreen:active,
@@ -2419,7 +2450,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 56px;
 	text-decoration: none;
-	background: url(/images/navig/mgreen.png) no-repeat 0 0;
+	background: url(../images/mgreen.png) no-repeat 0 0;
 }
 
 #menuh1 a.mblue:link, #menuh1 a.mblue:visited, #menuh1 a.mblue:active,
@@ -2438,7 +2469,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mblue.png) no-repeat 0 0;
+	background: url(../images/mblue.png) no-repeat 0 0;
 }
 
 #menuh1 a.myellow:link, #menuh1 a.myellow:visited, #menuh1 a.myellow:active,
@@ -2457,7 +2488,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 56px;
 	text-decoration: none;
-	background: url(/images/navig/myellow.png) no-repeat 0 0;
+	background: url(../images/myellow.png) no-repeat 0 0;
 }
 
 #menuh1.bg a.mpurple:link, #menuh1.bg a.mpurple:visited, #menuh1.bg a.mpurple:active,
@@ -2485,7 +2516,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mpurple.png) no-repeat 0 0;
+	background: url(../images/mpurple.png) no-repeat 0 0;
 }
 
 /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
@@ -2497,12 +2528,10 @@ nav#mainnav {
 	z-index: 5;
 }
 
-#menu2.en {
-	background: url(/images/navig/en/3.png) no-repeat 50% 50%;
-}
+
 
 #menu2.bg {
-	background: url(/images/navig/bg/3.png) no-repeat 50% 50%;
+	background: url(../images/3.png) no-repeat 50% 50%;
 }
 
 #menuh2 {
@@ -2514,12 +2543,10 @@ nav#mainnav {
 	display: none;
 }
 
-#menuh2.en {
-	background: url(/images/navig/en/2h.png) no-repeat 50% 50%;
-}
+
 
 #menuh2.bg {
-	background: url(/images/navig/bg/2h.png) no-repeat 50% 50%;
+	background: url(../images/2h.png) no-repeat 50% 50%;
 }
 
 #menuh2 a.mgreen:link, #menuh2 a.mgreen:visited, #menuh2 a.mgreen:active,
@@ -2538,7 +2565,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 56px;
 	text-decoration: none;
-	background: url(/images/navig/mgreen.png) no-repeat 0 0;
+	background: url(../images/mgreen.png) no-repeat 0 0;
 }
 
 #menuh2 a.mblue:link, #menuh2 a.mblue:visited, #menuh2 a.mblue:active,
@@ -2557,7 +2584,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mblue.png) no-repeat 0 0;
+	background: url(../images/mblue.png) no-repeat 0 0;
 }
 
 #menuh2 a.myellow:link, #menuh2 a.myellow:visited, #menuh2 a.myellow:active,
@@ -2577,7 +2604,7 @@ nav#mainnav {
 	text-align: center;
 	line-height: 16px;
 	text-decoration: none;
-	background: url(/images/navig/myellow.png) no-repeat 0 0;
+	background: url(../images/myellow.png) no-repeat 0 0;
 }
 
 #menuh2 a.mpurple:link, #menuh2 a.mpurple:visited, #menuh2 a.mpurple:active,
@@ -2597,7 +2624,7 @@ nav#mainnav {
 	text-align: center;
 	line-height: 16px;
 	text-decoration: none;
-	background: url(/images/navig/mpurple.png) no-repeat 0 0;
+	background: url(../images/mpurple.png) no-repeat 0 0;
 }
 
 #menuh2.en a.mpurple:link, #menuh2.en a.mpurple:visited, #menuh2.en a.mpurple:active,
@@ -2614,12 +2641,10 @@ nav#mainnav {
 	z-index: 5;
 }
 
-#menu3.en {
-	background: url(/images/navig/en/4.png) no-repeat 50% 50%;
-}
+
 
 #menu3.bg {
-	background: url(/images/navig/bg/4.png) no-repeat 50% 50%;
+	background: url(../images/4.png) no-repeat 50% 50%;
 }
 
 #menuh3 {
@@ -2631,12 +2656,10 @@ nav#mainnav {
 	display: none;
 }
 
-#menuh3.en {
-	background: url(/images/navig/en/3h.png) no-repeat 50% 50%;
-}
+
 
 #menuh3.bg {
-	background: url(/images/navig/bg/3h.png) no-repeat 50% 50%;
+	background: url(../images/3h.png) no-repeat 50% 50%;
 }
 
 #menuh3 a.mgreen:link, #menuh3 a.mgreen:visited, #menuh3 a.mgreen:active,
@@ -2655,7 +2678,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 16px;
 	text-decoration: none;
-	background: url(/images/navig/mgreen.png) no-repeat 0 0;
+	background: url(../images/mgreen.png) no-repeat 0 0;
 }
 
 #menuh3.en a.mgreen:link, #menuh3.en a.mgreen:visited, #menuh3.en a.mgreen:active,
@@ -2679,7 +2702,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mblue.png) no-repeat 0 0;
+	background: url(../images/mblue.png) no-repeat 0 0;
 }
 
 #menuh3.en a.mblue:link, #menuh3.en a.mblue:visited, #menuh3.en a.mblue:active,
@@ -2704,7 +2727,7 @@ nav#mainnav {
 	text-align: center;
 	line-height: 16px;
 	text-decoration: none;
-	background: url(/images/navig/myellow.png) no-repeat 0 0;
+	background: url(../images/myellow.png) no-repeat 0 0;
 }
 
 #menuh3.en a.myellow:link, #menuh3.en a.myellow:visited, #menuh3.en a.myellow:active,
@@ -2728,7 +2751,7 @@ nav#mainnav {
 	color: #fff;
 	line-height: 59px;
 	text-decoration: none;
-	background: url(/images/navig/mpurple.png) no-repeat 0 0;
+	background: url(../images/mpurple.png) no-repeat 0 0;
 }
 
 /* OLD NAVIG */
@@ -2987,7 +3010,7 @@ body.ie7 div.sitepath {
 }
 
 div.sitepath .wrap {
-	background-image: url("/images/banners/callcenter_sitepath.png");
+	background-image: url("../images/callcenter_sitepath.png");
 	background-position: 100% 9px;
 	background-repeat: no-repeat;
 	bottom: 11px;

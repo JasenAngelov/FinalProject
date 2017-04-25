@@ -1,9 +1,11 @@
+
 <?php
+
 /**
- * Контролерът проверява дали има такъв юзернейм (с викането на LoginDAO) ако има ще направи проверка на паролата, 
+ * Контролерът проверява дали има такъв юзернейм (с викането на LoginDAO) ако има ще направи проверка на паролата,
  * ако съвпада ще създаде клас Акаунт, който ще се запази в сесията, ако входните данни са грешни, ще върне към логин пейджа
- * и ще генерира грешка "Грешно име или парола", която ще се запази в сесията и ще се покаже на юзера. * 
- * 
+ * и ще генерира грешка "Грешно име или парола", която ще се запази в сесията и ще се покаже на юзера.
+ * *
  */
 session_start ();
 function __autoload($className) {
@@ -11,6 +13,10 @@ function __autoload($className) {
 }
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
+
+// $_POST ['userName'] = "Dobri123";
+// $_POST ['pwd'] = "772517";
+// $_POST ['submit'] = true;
 
 try {
 	$error = '';
@@ -35,7 +41,18 @@ try {
 				if ($dao->password_check ( $userpass, $info->password )) {
 					
 					$accounts = $dao->request_info ( $info->username, $info->password, $key );
-					$_SESSION ['acount'] = $accounts;
+					$_SESSION ['acount'] = $accounts;					
+					$perfix = $accounts->perfix;
+					$iban = $accounts->rawIban;
+					
+// Създаване на обект, съдържащ информация за транзакциите на клиента (Ако клиента няма транзакции връща folse)					
+					
+					$dao  = new TransactionDAO();
+					$transactions = $dao->transaction_history($iban, $key, $perfix);
+					$_SESSION['transaction'] = $transactions;
+					
+					
+					
 				} else {
 					$error = "Грешно име или парола!";
 					$flag = true;
@@ -61,5 +78,7 @@ try {
 	header ( "Location: ../view/BurkanPlus.php" );
 	exit ();
 }
-pas
+
+// var_dump($_SESSION['acount']);
+
 ?>

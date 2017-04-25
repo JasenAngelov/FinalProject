@@ -11,6 +11,10 @@ class Account implements JsonSerializable {
 // 	private $transactions;
 	private $perfix;
 	private $key;
+
+//  Èçïîëçâàì ãî çà òàìèðàíå íà òðàíçàêöèèòå íà ïîòðåáèòåëÿ !!!!ÑÌÅÍÈ ÊÀÒÎ ÈÇÌÈÑËÈØ ÏÎ-ÄÎÁÚÐ ÌÅÒÎÄ!!!
+
+	private $rawIban;
 	
 	public function __construct($client_id, $first_name, $last_name, $email, $phone, $IBAN, $currency, $balance, $perfix, $key) {
 		$trueIV = substr($perfix, 0, 16);
@@ -26,12 +30,14 @@ class Account implements JsonSerializable {
 // 		$this->transactions = $this->decode($transactions, $key, $perfix);
 		$this->perfix = $trueIV;
 		$this->key = $key;
+		$this->rawIban = $IBAN;
 	}
 	public function jsonSerialize() {
 		return get_object_vars ( $this );
 	}
 	public function __get($prop) {
-		return $this->decode($this->$prop, $this->key);
+		
+		return $this->$prop;
 	}
 	private function decode($data, $key, $perfix) {
 		$iv = $perfix;

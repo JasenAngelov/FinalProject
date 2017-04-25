@@ -16,6 +16,9 @@ if (isset ( $_SESSION ['error'] )) {
 
 $mesage = "<div class='ui-state-error-text'>$error</div>";
 
+
+
+
 ?>
 
 
@@ -37,10 +40,11 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 <link type="text/css" rel="stylesheet" href="./assets/css/login.css">
-
+<link href="./assets/css/preloader.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+	
 	<form id="m_Form" method="post" style="margin: 0px"
 		action="../controller/AccountControler.php">
 		<div id="container" class="login">
@@ -274,5 +278,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 		</form>
 	</div>
 	<script type="text/javascript" src="./assets/js/functions.js"></script>
+	<script src="./assets/js/preloader.js"></script>
+	
 </body>
 </html>

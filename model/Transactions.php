@@ -1,16 +1,21 @@
 <?php
 class Transactions implements JsonSerializable {
 	
-	private $sum;
-	private $recipient_iban;
-	private $recipient;
+	private $iban;
+	private $refrece;
 	private $date;
+	private $sum;
+	private $recipient;
+	private $type;
 	
-	public function __construct($sum, $recipient_iban, $recipient, $date){
-		$this->sum= $sum;
-		$this->recipient_iban= $recipient_iban;
-		$this->recipient= $recipient;
-		$this->date = $date;
+	public function __construct($refrece, $iban, $date, $sum, $recipient, $type, $key, $perfix){
+				
+		$this->IBAN= $this->decode($iban, $key, $perfix);
+		$this->refrece= $this->decode($refrece, $key, $perfix);
+		$this->Date= $this->decode($date, $key, $perfix);
+		$this->Sum = $this->decode($sum, $key, $perfix);
+		$this->recipient = $this->decode($recipient, $key, $perfix);
+		$this->Type = $this->decode($type, $key, $perfix);
 	}
 	
 	public function jsonSerialize() {
@@ -19,18 +24,13 @@ class Transactions implements JsonSerializable {
 	public function __get($prop) {
 		return $this->$prop;
 	}
-}
-$options = [
-		'cost' => 12,
-];
-				
-$password = 1234;
-$before= microtime(true);
-$password = password_hash($password, PASSWORD_BCRYPT, $options);
-$after = microtime(true);
-
-
-
-echo $password. "<br />" . ($after - $before)."<br />";
-
-echo var_dump(password_verify('1232', $password));
+	
+private function decode($data, $key, $perfix) {		
+		
+		$iv = $perfix;
+		$pass = $iv . $key;
+		$value = openssl_decrypt($data, 'AES-256-CBC', $pass, OPENSSL_RAW_DATA, $iv);
+		
+		return $value;
+	}
+}	
