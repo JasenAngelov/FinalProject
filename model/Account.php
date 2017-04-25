@@ -8,7 +8,6 @@ class Account implements JsonSerializable {
 	private $IBAN;
 	private $currency;
 	private $balance;
-// 	private $transactions;
 	private $perfix;
 	private $key;
 
@@ -27,7 +26,6 @@ class Account implements JsonSerializable {
 		$this->IBAN = $this->decode($IBAN, $key, $trueIV);
 		$this->currency = $this->decode($currency, $key, $trueIV);
 		$this->balance = $this->decode($balance, $key, $trueIV);
-// 		$this->transactions = $this->decode($transactions, $key, $perfix);
 		$this->perfix = $trueIV;
 		$this->key = $key;
 		$this->rawIban = $IBAN;

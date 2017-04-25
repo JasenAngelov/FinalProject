@@ -27,6 +27,7 @@ try {
 			$username = htmlentities ( trim ( $_POST ['userName'] ) );
 			$userpass = htmlentities ( trim ( $_POST ['pwd'] ) );
 			$key = $username . $userpass;
+			$_SESSION['key'] = $key;
 			
 			if (isset ( $username )) {
 				$dao = new LoginDAO ();
@@ -41,7 +42,7 @@ try {
 				if ($dao->password_check ( $userpass, $info->password )) {
 					
 					$accounts = $dao->request_info ( $info->username, $info->password, $key );
-					$_SESSION ['acount'] = $accounts;					
+					$_SESSION ['account'] = $accounts[0];					
 					$perfix = $accounts[0]->perfix;
 					$iban = $accounts[0]->rawIban;
 					
@@ -79,6 +80,8 @@ try {
 	exit ();
 }
 
-print_r($_SESSION['acount']);
+
+print_r($info = $_SESSION['account']);
+
 
 ?>
