@@ -7,6 +7,10 @@ function __autoload($className) {
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
 
+// Получаване на техническа информация от клиента
+$dao = new TechnicalDAO ();
+$_SESSION ['tech_info'] = $dao->request_info ();
+
 if (isset ( $_SESSION ['error'] )) {
 	$error = $_SESSION ['error'];
 	unset ( $_SESSION ['error'] );
@@ -16,8 +20,7 @@ if (isset ( $_SESSION ['error'] )) {
 
 $mesage = "<div class='ui-state-error-text'>$error</div>";
 
-
-
+define ( 'Footer', TRUE );
 
 ?>
 
@@ -34,7 +37,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 	content="Burkan Bank online, Burkan Bank, онлайн банкиране, електронно банкиране, банка, интернет, защита, сигурност, токен, информация, сметка, извлечение, валутен курс, валутни курсове, обмяна, Виза, МастърКард ">
 <meta name="description"
 	content="Портал за онлайн банкиране, Online banking portal">
-<meta name="author" content="Jasen & Kaloyan">
+<meta name="author" content="Jasen Angelov ">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
 <link type="image/x-icon"
@@ -44,7 +47,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 </head>
 
 <body>
-	
+
 	<form id="m_Form" method="post" style="margin: 0px"
 		action="../controller/AccountControler.php">
 		<div id="container" class="login">
@@ -79,8 +82,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 											</div>
 											<div class="login-checkbox-list">
 												<div class="login-input-group checkbox-group">
-													<input type="checkbox" id="IsLoginETAN" name="LoginETAN"
-														data-bind="checked: Data.ETANLoginHelpVisible"><label
+													<input type="checkbox" id="IsLoginETAN" name="LoginETAN"><label
 														for="IsLoginETAN" class="check bind"><span
 														class="pseudo-checkbox"></span> Парола от Е-ТАН </label><span
 														class="hint"
@@ -90,8 +92,8 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 														style="display: none;">
 														Вход в системата е възможен единствено при Е-ТАН,
 														регистриран като текущо активно средство за сигурност . <a
-															id="btnETAN" href="javascript:void(0)"
-															onclick="GenerateETAN($('#userName').val())"> Генерирай </a>
+															id="btnETAN" href="javascript:void(0)" onclick="">
+															Генерирай </a>
 													</p>
 												</div>
 											</div>
@@ -140,25 +142,9 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 
 
 
-		<footer id="footer">
-			<div class="wrap" style="cursor: pointer">
-				<ul>
-					<li><span class="copyright">© BACB • 2017</span></li>
-					<li><a target="_blank" class="userguide" href="">Потребителско
-							ръководство</a></li>
-					<li><a target="_blank" href="">Препоръки за сигурност</a></li>
-					<li><div class="def_control_CurrentCCY">
-							<span style="text-transform: uppercase"
-								class="def_control_CurrentCCY">Валутни курсове:<span
-								class="flaticon-storage"></span> &nbsp;EUR 1.955830&nbsp; USD
-								1.834570&nbsp; GBP 2.293960&nbsp;
-							</span>
-
-						</div></li>
-					<li><a class="userguide">EN</a></li>
-				</ul>
-			</div>
-		</footer>
+		<?php
+		include './footer.php';
+		?>
 	</form>
 	<div id="forgoten" style="display: none">
 		<form action="" method="post">
@@ -188,12 +174,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 							средство за сигурност, за да смените Вашата парола е необходимо
 							да посетите лично офис на банката.</p>
 
-						<div class="validation-summary-valid"
-							data-valmsg-summary-server-side="true">
-							<ul>
-								<li style="display: none"></li>
-							</ul>
-						</div>
+
 						<fieldset class="col2">
 
 							<div class="column">
@@ -203,14 +184,11 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 
 
 
-								</label> <input class="input-validation-margin valid"
-									data-val="true" data-val-required="Полето е задължително."
-									id="Name" name="Name" templateid="PaymentInputWithHelp"
-									type="text" value="JasenAngelov111">
+								</label> <input class="input-validation-margin valid" id="Name"
+									name="Name" type="text">
 
 								<div>
-									<span class="field-validation-valid" data-valmsg-for="Name"
-										data-valmsg-replace="true"></span>
+									<span class="field-validation-valid"></span>
 
 								</div>
 
@@ -218,42 +196,13 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 							</div>
 
 							<div class="column">
-								<label for="SecurityDevice" style="white-space: nowrap">
-									Средство за сигурност * </label> <select id="SecurityDevice"
-									name="SecurityDevice">
-
+								<label style="white-space: nowrap"> Средство за сигурност * </label>
+								<select id="SecurityDevice" name="SecurityDevice">
 									<option selected="selected" value="5">Парола от Е-ТАН</option>
-									<option value="1">парола от диспплей карта</option>
-
-									<option value="3">КЕП - Квалифициран Електронен Подпис</option>
-
 								</select>
 							</div>
 						</fieldset>
-						<fieldset class="col2" id="captchaHoldercall">
-							<div class="column">
-								<label for="Captcha_Code" style="white-space: nowrap"> Число за
-									контрол * </label>
-							</div>
 
-							<div class="column">
-								<input class="input-validation-margin" id="Captcha_Code"
-									name="Captcha.Code" type="text" value=""> <label class="note">Въведете
-									6-цифреното число, което виждате на своя екран.</label>
-
-								<div>
-									<span class="field-validation-valid"> </span>
-								</div>
-
-
-							</div>
-							<input id="Captcha_EncodedCode" name="Captcha.EncodedCode"
-								type="hidden" value="">
-							<div class="column">
-								<img id="Captcha_Image" src="./" alt="">
-
-							</div>
-						</fieldset>
 						<br style="clear: both;">
 
 						<div class="btnfoot clearfix">
@@ -266,12 +215,6 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 						<div style="clear: both; line-height: 0px;">&nbsp;</div>
 
 					</div>
-
-					<input type="hidden" name="as_sfid"
-						value="AAAAAAUCeI6_OXUS2uoQwcGhDS2-_X_wpN5itz0-oKR8xkjKU9N8ADFo1pcjA5mIiELQe7TVZ3XG62S5sWAyjaCJazDezisPwM2KVO1xEyD-3YJSbchzUagGlAbQExZ0PLw47hw="><input
-						type="hidden" name="as_fid"
-						value="79924397c8966aaf493fc3686e960fa28bf59a17">
-
 				</div>
 
 			</div>
@@ -279,6 +222,5 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 	</div>
 	<script type="text/javascript" src="./assets/js/functions.js"></script>
 	<script src="./assets/js/preloader.js"></script>
-	
 </body>
 </html>

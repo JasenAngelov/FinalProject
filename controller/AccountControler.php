@@ -16,7 +16,7 @@ $check->Check_connection_protocol ();
 
 $_POST ['userName'] = "Dobriaa123";
 $_POST ['pwd'] = "772517";
-$_POST ['submit'] = true;
+$_POST ['submit'] = true; 
 
 try {
 	$error = '';
@@ -27,7 +27,7 @@ try {
 			$username = htmlentities ( trim ( $_POST ['userName'] ) );
 			$userpass = htmlentities ( trim ( $_POST ['pwd'] ) );
 			$key = $username . $userpass;
-			$_SESSION['key'] = $key;
+			$_SESSION ['key'] = $key;
 			
 			if (isset ( $username )) {
 				$dao = new LoginDAO ();
@@ -41,17 +41,18 @@ try {
 				
 				if ($dao->password_check ( $userpass, $info->password )) {
 					
+					$_SESSION ['logged_in_time'] = time ();
+					
 					$accounts = $dao->request_info ( $info->username, $info->password, $key );
-					$_SESSION ['account'] = $accounts[0];					
-					$perfix = $accounts[0]->perfix;
-					$iban = $accounts[0]->rawIban;
+					$_SESSION ['account'] = $accounts [0];
+					$perfix = $accounts [0]->perfix;
+					$iban = $accounts [0]->rawIban;
 					
-// Създаване на обект, съдържащ информация за транзакциите на клиента (Ако клиента няма транзакции връща folse)					
+					// Създаване на обект, съдържащ информация за транзакциите на клиента (Ако клиента няма транзакции връща folse)
 					
-					$dao  = new TransactionDAO();
-					$transactions = $dao->transaction_history($iban, $key, $perfix);
-					$_SESSION['transaction'] = $transactions;
-					
+					$dao = new TransactionDAO ();
+					$transactions = $dao->transaction_history ( $iban, $key, $perfix );
+					$_SESSION ['transaction'] = $transactions;
 					
 					
 				} else {
@@ -73,15 +74,16 @@ try {
 		header ( "Location: ../view/BurkanPlus.php" );
 		exit ();
 	}
+	if (! $flag) {
+		http_response_code ( 200 );
+		header ( "Location: ../view/inner.php" );
+		exit ();
+	}
 } catch ( Exception $e ) {
 	echo $_SESSION ['error'] = $e->message;
 	http_response_code ( 401 );
 	header ( "Location: ../view/BurkanPlus.php" );
 	exit ();
 }
-
-
-print_r($info = $_SESSION['account']);
-
 
 ?>

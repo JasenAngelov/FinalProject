@@ -7,20 +7,41 @@ class Control_functions {
 	public function Check_connection_protocol (){
 		if($_SERVER['SERVER_PORT'] != 443)
 		{
-			echo  header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);			
+			header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+			exit ();
+			
 		}
 		
 	}
+	public function Check_session_time(){
+		if (isset($_SESSION['logged_in_time']) && (time() - $_SESSION['logged_in_time']) < 1800){
+			session_regenerate_id();
+			
+			$_SESSION['logged_in_time'] = time();
+		}else {
+			session_destroy();
+			
+			session_start();
+			$_SESSION ['error'] = 'Изтекла  Сесия!';
+			http_response_code ( 403 );
+			header ( "Location: ../view/BurkanPlus.php" );
+			exit ();
+		}
+	}
+	
+	
+	
+	
 	
 	public function errorMessage_and_header($message){
 		
-		 function ($message){
+		function ($message){
 			return $_SESSION ['error'] = $message;
 		};
-		 function (){
-			return http_response_code ( 401 );
+		function (){
+			return http_response_code ( 403 );
 		};
-		 function (){
+		function (){
 			return header ( "Location: ../view/BurkanPlus.php" );
 		};
 	}
@@ -28,9 +49,12 @@ class Control_functions {
 	public function getCurrencyCode($currency){
 		
 		$currencies = array_unique($this->currencies);
-		$currencies = array_values($currencies);		
+		$currencies = array_values($currencies);
 		return array_search($currency, $currencies) + 1;
 	}
+	
+	
+	
 }
 
 ?>		

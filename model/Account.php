@@ -24,7 +24,7 @@ class Account implements JsonSerializable {
 		$this->email = $this->decode($email, $key, $trueIV);
 		$this->phone = $this->decode($phone, $key, $trueIV);
 		$this->IBAN = $this->decode($IBAN, $key, $trueIV);
-		$this->currency = $this->decode($currency, $key, $trueIV);
+		$this->currency = $currency;
 		$this->balance = $this->decode($balance, $key, $trueIV);
 		$this->perfix = $trueIV;
 		$this->key = $key;

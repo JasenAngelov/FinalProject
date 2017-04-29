@@ -1,7 +1,5 @@
 <?php
-function __autoload($className) {
-	require_once '../model/' . $className . ".php";
-}
+
 
 /**
  * Клас който се занимава с техническата информация на клиент. Взема му IPто и го записва в базата данни, след това с него може да се следи,
@@ -78,6 +76,5 @@ class TechnicalDAO {
 	}
 }
 
-$aa = new TechnicalDAO ();
-print_r ( $aa->insert_new_ip());
+
 
