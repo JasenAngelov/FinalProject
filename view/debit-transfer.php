@@ -100,7 +100,7 @@ include './header.php';
 											class="bind inputedit input-validation-margin"
 											id="Document_PayeeIBAN" maxlength="22"
 											name="Document.PayeeIBAN"
-											onblur="GetBICByIBAN('Document_PayeeIBAN', '', 'Document_PayeeBIC', 'Document_PayeeBICName', false);"
+											onblur="GetBICByIBAN('Document_PayeeIBAN');"
 											size="30" type="text" value="">
 										<div>
 											<span class="field-validation-valid"> </span>

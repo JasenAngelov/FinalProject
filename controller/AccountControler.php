@@ -16,7 +16,7 @@ $check->Check_connection_protocol ();
 
 $_POST ['userName'] = "Dobriaa123";
 $_POST ['pwd'] = "772517";
-$_POST ['submit'] = true; 
+$_POST ['submit'] = true;
 
 try {
 	$error = '';
@@ -27,7 +27,8 @@ try {
 			$username = htmlentities ( trim ( $_POST ['userName'] ) );
 			$userpass = htmlentities ( trim ( $_POST ['pwd'] ) );
 			$key = $username . $userpass;
-			$_SESSION ['key'] = $key;
+			
+			//Първоначална проверка на данните (Прави запитване до DB за конкретен username, ако такъв съществува му взема хешираната парола)
 			
 			if (isset ( $username )) {
 				$dao = new LoginDAO ();
@@ -53,8 +54,6 @@ try {
 					$dao = new TransactionDAO ();
 					$transactions = $dao->transaction_history ( $iban, $key, $perfix );
 					$_SESSION ['transaction'] = $transactions;
-					
-					
 				} else {
 					$error = "Грешно име или парола!";
 					$flag = true;

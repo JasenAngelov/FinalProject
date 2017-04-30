@@ -25,8 +25,7 @@ define ( 'header', TRUE );
 <meta name="author" content="Jasen & Kaloyan">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="./assets/css/flaticon.css">
-<link type="image/x-icon"
-	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
+
 <link type="text/css" rel="stylesheet" href="./assets/css/login.css">
 <link href="./assets/css/preloader.css" rel="stylesheet" type="text/css">
 <title>Burkan Plus</title>
