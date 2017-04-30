@@ -1,14 +1,16 @@
 eclipse.preferences.version=1
 encoding//bin/Client.php=UTF-8
 encoding//bin/LogIn_page.php=UTF-8
+encoding//bin/Paiments.php=UTF-8
 encoding//model/Control_functions.php=UTF-8
 encoding//model/TransactionDAO.php=UTF-8
 encoding//view/BurkanPlus.php=UTF-8
-encoding//view/Paiments.php=UTF-8
 encoding//view/assets/css/login.css=UTF-8
+encoding//view/create-user.php=UTF-8
 encoding//view/debit-transfer.php=UTF-8
 encoding//view/footer.php=UTF-8
 encoding//view/header.php=UTF-8
 encoding//view/index.php=UTF-8
 encoding//view/inner.php=UTF-8
 encoding/controller=UTF-8
+encoding/view=UTF-8

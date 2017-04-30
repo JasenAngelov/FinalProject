@@ -33,7 +33,7 @@ define ( 'header', TRUE );
 </head>
 <body>	
 <?php 
-include './header.php';
+include '../view/header.php';
 ?>
 	<div id="content" class="clearfix">
 		<div id="main" role="main" class="middle">

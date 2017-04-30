@@ -17,7 +17,7 @@ define ( 'header', TRUE );
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Burkan Bank Plus</title>
+<title>Буркан Plus</title>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <meta name="keywords"

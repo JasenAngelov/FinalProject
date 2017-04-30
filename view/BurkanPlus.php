@@ -80,22 +80,7 @@ define ( 'Footer', TRUE );
 													class="input-control" id="pwd" size="33" tabindex="0"
 													name="pwd" autocomplete="off">
 											</div>
-											<div class="login-checkbox-list">
-												<div class="login-input-group checkbox-group">
-													<input type="checkbox" id="IsLoginETAN" name="LoginETAN"><label
-														for="IsLoginETAN" class="check bind"><span
-														class="pseudo-checkbox"></span> Парола от Е-ТАН </label><span
-														class="hint"
-														title="Това е уникална, еднократно използваема, 8-разрядна цифрова комбинация, представляваща парола за идентификация. Моля изберете Генерирай и после въведете получената като SMS парола.">?</span>
-													<p class="passphrase note bind"
-														data-bind="visible: Data.ETANLoginHelpVisible"
-														style="display: none;">
-														Вход в системата е възможен единствено при Е-ТАН,
-														регистриран като текущо активно средство за сигурност . <a
-															id="btnETAN" href="javascript:void(0)" onclick="">
-															Генерирай </a>
-													</p>
-												</div>
+											<div class="login-checkbox-list">												
 											</div>
 											<!--CAPTCHA-->
 											<!--CAPTCHA-->

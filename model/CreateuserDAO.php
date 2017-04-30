@@ -44,7 +44,7 @@ class CreateuserDAO {
 		$encLname = openssl_encrypt ( $ulastName, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
 		$encEmail = openssl_encrypt ( $uemail, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
 		$encPhone = openssl_encrypt ( $uphone, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
-		$encBalance = openssl_encrypt ( $balance, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
+		$encBalance = openssl_encrypt ( $balance, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );		
 // 		$encCurrency = openssl_encrypt ( $currency, 'AES-256-CBC', $password, OPENSSL_RAW_DATA, $iv );
 		
 		

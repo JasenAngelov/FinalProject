@@ -18,14 +18,7 @@ if (! defined ( 'header' )) {
 				<a class="logo" href=""><img src="./assets/images/logo.png"
 					alt="Burkan Home"></a>
 				<nav id="service-area">
-					<ul class="messages">
-						<li><a href="" title="Комуникация с BBBG"><img
-								src="./assets/images/messages-17.png" alt=""></a><span
-							style="color: #f00; font-size: 0.8em; padding-right: 5px;"><span
-								id="span_welcomeCnt"
-								xmlns:xsd="http://www.w3.org/2001/XMLSchema">23</span></span></li>
-						<li></li>
-					</ul>
+					
 					<ul class="welcome">
 						<control id="Welcome" ctype="Control"
 							xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <span
@@ -45,7 +38,7 @@ if (! defined ( 'header' )) {
 				<div id="menu">
 					<div id="menu0" class="menuitem bg"	style="opacity: 1; left: 103px;">
 						<div id="menuh0" class="bg" >
-							<a href="./Paiments.php" class="mgreen">НОВ ПРЕВОД</a>
+							<a href="./debit-transfer.php" class="mgreen">НОВ ПРЕВОД</a>
 							<a href="" class="myellow">ЧАКАЩИ</a>
 							<a href="" class="mblue">КОМУНАЛНИ</a>
 							<a href="" class="mpurple">РЕГУЛЯРНИ</a>
