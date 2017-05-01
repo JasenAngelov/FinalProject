@@ -30,8 +30,8 @@ function fetching(target) {
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
 	    	
 	     var information = JSON.parse(this.responseText);	     
-	     document.getElementById('Document_PayerName').value = information.name;	     
-	     document.getElementById('Document_PayerIBAN').value = information.iban;
+	     document.getElementById('PayerName').value = information.name;	     
+	     document.getElementById('PayerIBAN').value = information.iban;
 	     
 	    }
 	  };	  
@@ -39,7 +39,7 @@ function fetching(target) {
 };
 
 function dataQery() {
-	var element = document.getElementById("Document_PayerPicker");
+	var element = document.getElementById("user_acc");
 	var target = element.options[element.selectedIndex].value;
 	fetching(target);
 }

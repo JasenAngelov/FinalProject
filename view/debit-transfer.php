@@ -36,7 +36,11 @@ define ( 'header', TRUE );
 <?php
 include './header.php';
 ?>
-	<form id="m_Form" method="post" style="margin: 0px" action="">
+	<form id="m_Form" method="post" style="margin: 0px"
+		action="../controller/TransactionControler.php">
+		<div>
+			<input type="hidden" name="valid_req" value="true" id="transfer" />
+		</div>
 		<div class="corpCont" id="container">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="middle">
@@ -47,13 +51,13 @@ include './header.php';
 									<h2 class="buttons">Наредител</h2>
 									<p class="note">Избери сметка на наредител</p>
 									<div class="row" style="width: 500px">
-										<select class="bind inputedit" id="Document_PayerPicker"
-											name="Document.PayerPicker" tabindex="-1" onchange="dataQery()">
+										<select class="bind inputedit" id="user_acc" name="user_acc"
+											tabindex="-1" onchange="dataQery()">
 											<option selected="selected" value="none"></option>
 											 <?php
 												if (is_array ( $account_info )) {
 													foreach ( $account_info as $key => $value ) {
-														echo "<option value='$key + 1'>$value->IBAN $value->currency $value->balance</option>";
+														echo "<option value='$key'>$value->IBAN $value->currency $value->balance</option>";
 													}
 												} else {
 													echo "<option value='1'>$account_info->IBAN &nbsp; &nbsp; $account_info->currency  &nbsp; &nbsp;  $account_info->balance</option>";
@@ -64,17 +68,15 @@ include './header.php';
 									</div>
 									<div class="column">
 										<label> Име <span>*</span></label><input
-											class="bind inputro input-validation-margin"
-											id="Document_PayerName" maxlength="35"
-											name="Document.PayerName" readonly="readonly" size="50"
+											class="bind inputro input-validation-margin" id="PayerName"
+											maxlength="35" name="PayerName" readonly="readonly" size="50"
 											tabindex="-1" type="text" value="">
 
 									</div>
 									<div class="column">
 										<label> IBAN на наредителя <span>*</span></label><input
-											class="bind inputro input-validation-margin"
-											id="Document_PayerIBAN" maxlength="22"
-											name="Document.PayerIBAN" readonly="readonly" size="30"
+											class="bind inputro input-validation-margin" id="PayerIBAN"
+											maxlength="22" name="PayerIBAN" readonly="readonly" size="30"
 											tabindex="-1" type="text" value="">
 
 									</div>
@@ -86,21 +88,17 @@ include './header.php';
 									<div class="column">
 										<label for="Document_PayeeName"> Име <span>*</span></label><input
 											class="bind inputedit input-validation-margin"
-											id="Document_PayeeName" maxlength="35"
-											name="Document.PayeeName" size="50" type="text" value=""> <label>
-											BIC <span>*</span>
+											id="payee_fName" maxlength="35" name="payee_fName" size="50"
+											type="text" value=""> <label> Фамилия <span>*</span>
 										</label><input class="bind inputro input-validation-margin"
-											id="Document_PayeeBIC" maxlength="8" name="Document.PayeeBIC"
-											 size="14" tabindex="-1" type="text"
-											value="">
+											id="payee_lName" maxlength="32" name="payee_lName" size="14"
+											tabindex="-1" type="text" value="">
 
 									</div>
 									<div class="column">
 										<label for="Document_PayeeIBAN"> IBAN на получателя <span>*</span></label><input
 											class="bind inputedit input-validation-margin"
-											id="Document_PayeeIBAN" maxlength="22"
-											name="Document.PayeeIBAN"
-											onblur="GetBICByIBAN('Document_PayeeIBAN');"
+											id="recipientIBAN" maxlength="22" name="recipientIBAN"
 											size="30" type="text" value="">
 										<div>
 											<span class="field-validation-valid"> </span>
@@ -108,8 +106,8 @@ include './header.php';
 										<label> Име на банката на получателя </label><input
 											class="bind inputro input-validation-margin"
 											data-helper-payee="BICName" id="Document_PayeeBICName"
-											name="Document.PayeeBICName"  size="40"
-											tabindex="-1" type="text" value="">
+											name="Document.PayeeBICName" size="40" tabindex="-1"
+											type="text" value="">
 
 									</div>
 								</fieldset>
@@ -117,31 +115,24 @@ include './header.php';
 									<h2>Сума</h2>
 									<div class="column">
 										<label for="Document_Amount"> Сума <span>*</span></label><input
-											class="bind inputedit input-validation-margin"
-											id="Document_Amount" maxlength="14" name="Document.Amount"
-											size="15" type="text" value="0.00">
-										<div>
-											<span class="field-validation-valid"
-												data-valmsg-for="Document.Amount" data-valmsg-replace="true"></span>
-										</div>
+											class="bind inputedit input-validation-margin" id="Amount"
+											maxlength="14" name="Amount" size="15" type="text"
+											value="0.00">										
 									</div>
 									<div class="column">
 										<label> Валута <span>*</span></label><input
 											class="inputro input-validation-margin" data-val="true"
 											data-val-required="Полето е задължително." id="Document_CCY"
 											name="Document.CCY" readonly="readonly" size="3"
-											tabindex="-1" type="text" value="<?php echo "$account_info->currency";?>">
-										<div>
-											<span class="field-validation-valid"
-												data-valmsg-for="Document.CCY" data-valmsg-replace="true"></span>
-										</div>
+											tabindex="-1" type="text"
+											value="<?php echo "$account_info->currency";?>">										
 									</div>
 									<div class="column">
 										<label for="Document_RINGS"> Платежна система </label><select
-											class="bind  input-validation-margin" id="Document_RINGS"
-											name="Document.RINGS" size="1">
-											<option selected="selected" value="1">БИСЕРА</option>
-											<option value="2">РИНГС</option>
+											class="bind  input-validation-margin" id="Type"
+											name="Type" size="1">
+											<option selected="selected" value="БИСЕРА">БИСЕРА</option>
+											<option value="РИНГС">РИНГС</option>
 										</select>
 									</div>
 								</fieldset>
@@ -151,26 +142,23 @@ include './header.php';
 									<div class="column">
 										<label for="Document_Description1"> Основание за плащане <span>*</span></label><input
 											class="bind inputedit input-validation-margin"
-											id="Document_Description1" maxlength="35"
-											name="Document.Description1" size="50" type="text" value="">
-										<div>
-											<span class="field-validation-valid"
-												data-valmsg-for="Document.Description1"
-												data-valmsg-replace="true"></span>
-										</div>
+											id="reason" maxlength="35"
+											name="reason" size="50" type="text" value="">
+										
 									</div>
 									<div class="column">
 										<label for="Document_Description2"> Още пояснения </label><input
 											class="bind inputedit input-validation-margin"
-											id="Document_Description2" maxlength="35"
-											name="Document.Description2" size="50" type="text" value="">
+											id="aditional_reason" maxlength="35"
+											name="aditional_reason" size="50" type="text" value="">
 
 									</div>
 								</fieldset>
 								<div class="pmt_footer clearfix">
-									<a href="" class="back"><span>Назад</span></a> <a href="#"
-										id="btnSaveAndSend" class="savesend"><span>Запиши и изпрати</span></a>
-									<a href="#" id="btnSave" class="save"><span>Запази</span></a>
+									<a href="" class="back"><span>Назад</span></a><span
+										id="btnSaveAndSend" class="savesend"><input type="submit"
+										value="Запиши и изпрати" /></span> <a href="#" id="btnSave"
+										class="save"><span>Запази</span></a>
 								</div>
 							</div>
 						</div>
@@ -183,6 +171,6 @@ include './header.php';
 include './Footer.php';
 ?>	
 <script type="text/javascript" src="./assets/js/ajax.js"></script>
-</form>
+	</form>
 </body>
 </html>

@@ -43,7 +43,7 @@ define ( 'header', TRUE );
 						<thead class="accounts">
 							<tr>
 								<th class="caption primo"><span>Сметки</span></th>
-								<th class="secundo">&nbsp;</th>
+								<th class="secundo">Валута</th>
 								<th class="tertio">&nbsp;</th>
 								<th class="amt quarto">Баланс</th>
 								<th class="amt quinto"><span
@@ -57,40 +57,12 @@ define ( 'header', TRUE );
 							<tr class="bg0">
 								<td class="grouper_item"><a href=""><?php echo $account_info->IBAN; ?></a></td>
 								<td class="cali"><?php echo $account_info->currency; ?></td>
-								<td class="amt"><img src="./assets/images/credit-card.png"
-									alt="card"><sup style="margin-left: 3px; font-size: 9px">2</sup></td>
+								<td class="amt"><sup style="margin-left: 3px; font-size: 9px"></sup></td>
 								<td class="amt debit "><?php echo number_format($account_info->balance, 2, ',', ' ')?></td>
 								<td class="amt debit"><?php echo number_format($account_info->balance, 2, ',', ' ')?></td>
 							</tr>
 						</tbody>
-						<thead class="cards">
-							<tr>
-								<th class="caption"><span>Карти</span></th>
-								<th>&nbsp;</th>
-								<th class="rali">Номер</th>
-								<th class="rali">Валидност</th>
-								<th class="amt rali">Разполагаема наличност</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td colspan="5" class="bclname cards"><?php  echo  $account_info->first_name . " " .$account_info->last_name;?></td>
-							</tr>
-							<tr class="bg0">
-								<td class="grouper_item"><a href="">VISA BUSINESS Debit</a></td>
-								<td class="cali">BGN</td>
-								<td class="rali"><nobr>4598 **** **** 6034</nobr></td>
-								<td class="rali"><nobr>08/21</nobr></td>
-								<td class="amt"><?php echo number_format($account_info->balance, 2, ',', ' ')?></td>
-							</tr>
-							<tr class="bg1">
-								<td class="grouper_item"><a href=""> VISA BUSINESS Debit </a></td>
-								<td class="cali">BGN</td>
-								<td class="rali"><nobr>4598 **** **** 7350</nobr></td>
-								<td class="rali"><nobr>05/21</nobr></td>
-								<td class="amt"><?php echo number_format($account_info->balance, 2, ',', ' ')?></td>
-							</tr>
-						</tbody>
+						
 					</table>
 				</div>
 				<div class="overviewMoveTable">

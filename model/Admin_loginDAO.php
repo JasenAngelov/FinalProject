@@ -28,4 +28,3 @@ class Admin_loginDAO {
 	
 	
 }
-

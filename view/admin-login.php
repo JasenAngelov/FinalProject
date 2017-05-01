@@ -61,12 +61,12 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 												<label for="userName"> Потребител </label><input
 													class="input-control valid" type="text" id="userName"
 													tabindex="0" size="33" name="userName" autocomplete="off"
-													maxlength="32" value="">
+													maxlength="32" value="JasenAdmina">
 											</div>
 											<div class="login-input-group">
 												<label for="pwd"> Парола </label><input type="password"
 													class="input-control" id="pwd" size="33" tabindex="0"
-													name="pwd" autocomplete="off">
+													name="pwd" autocomplete="off" value="123456789J">
 											</div>
 										</div>
 									</div>

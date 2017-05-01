@@ -27,18 +27,24 @@ class IBANGenerator {
      * 
      * @return string
      */
-    public function generate($bankCode = '', $bankAccountNr = '', $locale = '') {
-        if(empty($locale)) $locale = $this->locale;
-        if(empty($bankCode)) $bankCode = $this->bankCode;
-        if(empty($bankAccountNr)) $bankAccountNr = $this->bankAccountNr;
+    public function generate($bankCode = null, $bankAccountNr = null, $locale = null) {
+        if(is_null($locale)){
+        	$clocale = $this->locale;
+        }
+        if(is_null($bankCode)){
+        	$cbankCode = $this->bankCode;
+        }
+        if(is_null($bankAccountNr)){
+        	$cbankAccountNr = $this->bankAccountNr;
+        }
         
         $BBAN = $this->getBBAN($bankCode, $bankAccountNr);
-        $checksum = $this->getChecksum($bankCode, $bankAccountNr, $locale);
+        $checksum = $this->getChecksum($cbankCode, $cbankAccountNr, $clocale);
         // ISO 7064 per Modulo 97-10
         $checkcipher = $this->getCheckcipher($checksum);
 
         // the ready IBAN ;)
-        return $locale.$checkcipher.$BBAN;
+        return $clocale.$checkcipher.$BBAN;
     }
 
     /**

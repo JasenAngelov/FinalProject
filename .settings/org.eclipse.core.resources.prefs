@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//bin/Client.php=UTF-8
 encoding//bin/LogIn_page.php=UTF-8
 encoding//bin/Paiments.php=UTF-8
+encoding//db__credentials/iv.txt=Cp1251
 encoding//model/Control_functions.php=UTF-8
 encoding//model/TransactionDAO.php=UTF-8
 encoding//view/BurkanPlus.php=UTF-8
