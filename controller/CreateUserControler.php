@@ -5,37 +5,59 @@ function __autoload($className) {
 }
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
-$check->Check_session_time ();
-
+$check->Admin_check_session_time ();
+$check->IssAdminLoged ();
+$flag = true;
 try {
-	if (isset ( $_POST ['submit'] )) {
+	if (isset ( $_POST ["valid_req"] ) && ! array_search ( "", $_POST )) {
 		
-		if (mb_strlen ( $_POST ['userName'] ) > 0 && mb_strlen ( $_POST ['pwd'] ) > 0) {
-			$username = htmlentities ( trim ( $_POST ['userName'] ) );
-			$userpass = htmlentities ( trim ( $_POST ['pwd'] ) );
-			$ip = $_SERVER ['REMOTE_ADDR'];
-			
-			$dao = new Admin_loginDAO ();
-			
-			// Проверка на данните (Прави запитване до DB за конкретно Име и Парола и ако са верни връща boolean!)
-			
-			if ($info = $dao->request_info ( $username, $userpass, $ip )) {
-				
-				$_SESSION ['admin_log'] = true;
-				http_response_code ( 200 );
-				header ( "Location: ../view/create-user.php" );
-			} else {
-				$_SESSION ['admin_log'] = false;
-				$_SESSION ['error'] = 'Грешенo Име ли Парола!';
-				http_response_code ( 403 );
-				header ( "Location: ../view/admin-login.php" );
-			}
+		// Създаване на обект от масива POST за по-лесна обработка на данните
+		
+		$info = new stdClass ();
+		foreach ( $_POST as $key => $value ) {
+			$info->$key = $value;
 		}
+		
+		// Проверка на валидността на паролата и името
+		
+		if (($info->username === $info->username_check) && ($info->pass === $info->pass_check) && $info->initial_amount >= 0) {
+			
+			$dao = new CreateuserDAO ();
+			$result = $dao->create_user ( $info->first_name, $info->last_name, $info->client_email, $info->client_phone, $info->username, $info->pass, $info->currency_id, $info->initial_amount );
+			
+			if ($result) {				
+				$_SESSION ['responseMSG'] = "Успешно създадохте нов Клиент!";
+				$flag = true;
+			} else {				
+				$_SESSION ['responseMSG'] = "Нещо се обърка, проверете дали вече няма такъв клиент!";
+				$flag = false;
+			}
+		} else {
+			$_SESSION ['responseMSG'] = "Моля проверете входните си данни и опитайте пак!";
+			$flag = false;
+		}
+	} else {
+		$_SESSION ['responseMSG'] = "Ne minava proverkata";
+		$flag = false;
 	}
-} catch ( Exception $e ) {
-	echo $_SESSION ['error'] = $e->message;
+	if ($flag){
+		http_response_code ( 200 );
+		header ( "Location: ../view/create-user.php" );
+		exit ();
+	}else {
+		http_response_code ( 403 );
+		header ( "Location: ../view/create-user.php" );
+		exit ();
+	}
+	
+} catch ( PDOException $e ) {
+	
+	if ($e->errorInfo[1] = 1062) {
+		$_SESSION ['responseMSG'] = "Вече съществува такъв клиент!";
+	}
+	
 	http_response_code ( 403 );
-	header ( "Location: ../view/admin-login.php" );
+	header ( "Location: ../view/create-user.php" );
 	exit ();
 }
 

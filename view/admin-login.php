@@ -5,7 +5,6 @@ function __autoload($className) {
 }
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
-
 $_SESSION['logged_in_time'] = time();
 
 if (isset ( $_SESSION ['error'] )) {
@@ -43,7 +42,7 @@ $mesage = "<div class='ui-state-error-text'>$error</div>";
 <link href="./assets/css/preloader.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form id="m_Form" method="post" name="submit" action="../controller/CreateUserControler.php" style="margin: 0px">
+	<form id="m_Form" method="post" name="submit" action="../controller/Admin-login-controler.php" style="margin: 0px">
 		<div id="container" class="login">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="wide">

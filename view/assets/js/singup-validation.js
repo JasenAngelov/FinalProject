@@ -6,10 +6,10 @@ function createClient(){
         $('#dadada').html("<b>Loading response...</b>");
          
         /*
-         * 'post_receiver.php' - where you will pass the form data
-         * $(this).serialize() - to easily read form data
-         * function(data){... - data contains the response from post_receiver.php
-         */
+		 * 'post_receiver.php' - where you will pass the form data
+		 * $(this).serialize() - to easily read form data function(data){... -
+		 * data contains the response from post_receiver.php
+		 */
         $.post('../controllr/CreateUserControler.php', $(this).serialize(), function(data){
              
             // show the response
@@ -33,30 +33,30 @@ function createClient(){
 
 
 // -=-=-=-=-=-=--=---=-= Chech for e-mail exist=-=-=-=-=-=-=--=-=-==-=-=\\
-//var email = document.getElementById('e-mail');
-//email.onblur = function() {
-//	var currier = new XMLHttpRequest();
-//	currier.onreadystatechange = function() {
-//		if (this.readyState === 4 && this.status === 200) {
-//			console.log(this.responseText);
-//			var incomeData = JSON.parse(this.responseText);
+// var email = document.getElementById('e-mail');
+// email.onblur = function() {
+// var currier = new XMLHttpRequest();
+// currier.onreadystatechange = function() {
+// if (this.readyState === 4 && this.status === 200) {
+// console.log(this.responseText);
+// var incomeData = JSON.parse(this.responseText);
 //
-//			if (incomeData['haveMail'] === true) {
-//				alert("Email " + incomeData['mail'] + " alredy exist!");
-//			}
-//		}
-//	}
-//	var dataSend = 'data=' + JSON.stringify({
-//		mail : email.value
-//	});
-//	currier
-//			.open(
-//					'POST',
-//					'http://localhost/Project1/Team-Project/SmartMoney/php/checkForExistEmailJS.php',
-//					true);
-//	currier.setRequestHeader("Content-Type", "application/json");
-//	currier.send(dataSend);
-//}
+// if (incomeData['haveMail'] === true) {
+// alert("Email " + incomeData['mail'] + " alredy exist!");
+// }
+// }
+// }
+// var dataSend = 'data=' + JSON.stringify({
+// mail : email.value
+// });
+// currier
+// .open(
+// 'POST',
+// 'http://localhost/Project1/Team-Project/SmartMoney/php/checkForExistEmailJS.php',
+// true);
+// currier.setRequestHeader("Content-Type", "application/json");
+// currier.send(dataSend);
+// }
 // -=-=-=-=-=-=--=---=-= email end =-=-=-=-=-=-=--=-=-==-=-=\\
 
 // -=-=-=-=-=-=--=---=-= Field validation =-=-=-=-=-=-=--=-=-==-=-=\\
@@ -134,37 +134,78 @@ function checkMatch(id1, id2) {
 // -=-=-=-=-=-=--=---=-= password end =-=-=-=-=-=-=--=-=-==-=-=\\
 
 
-//-=-=-=-=-=-=--=---=-= Finale check before sublith  =-=-=-=-=-=-=--=-=-==-=-=\\
+// -=-=-=-=-=-=--=---=-= Finale check before sublith =-=-=-=-=-=-=--=-=-==-=-=\\
 function finalCheck() {
 	var final = true;
-//	if (!checkMatch('#pass', '#pass_check')) {
-//		event.preventDefault();
-//		final = false;
-//	}
-//	if (!checkMatch('#username', '#username_check')) {
-//		event.preventDefault();
-//		final = false;
-//	}
-//	if (!validatePhone()) {
-//		event.preventDefault();
-//		final = false;
-//	}
-//	if (!validateEmail()) {
-//		event.preventDefault();
-//		final = false;
-//	}
-//	if (!fieldCheck('#last_name')) {
-//		event.preventDefault();
-//		final = false;
-//	}
-//	if (!fieldCheck('#first_name')) {
-//		event.preventDefault();
-//		final = false;
-//	}
+	if (!checkMatch('#pass', '#pass_check')) {
+		event.preventDefault();
+		final = false;
+	}
+	if (!checkMatch('#username', '#username_check')) {
+		event.preventDefault();
+		final = false;
+	}
+	if (!validatePhone()) {
+		event.preventDefault();
+		final = false;
+	}
+	if (!validateEmail()) {
+		event.preventDefault();
+		final = false;
+	}
+	if (!fieldCheck('#last_name')) {
+		event.preventDefault();
+		final = false;
+	}
+	if (!fieldCheck('#first_name')) {
+		event.preventDefault();
+		final = false;
+	}
 	if (final) {
 		
 		$('#create_Form').submit();
+	
 		event.preventDefault();
 	}
 }
-//-=-=-=-=-=-=--=---=-= Finale check before sublith  END =-=-=-=-=-=-=--=-=-==-=-=\\
+// -=-=-=-=-=-=--=---=-= Finale check before sublith END
+// =-=-=-=-=-=-=--=-=-==-=-=\\
+
+/*
+ * ////$(document).ready(function(){ //// $('#create_Form').submit(function(){ //
+ * //// // show that something is loading //// $('#dadada').html("<b>Loading
+ * response...</b>"); // //// /* //// * 'post_receiver.php' - where you will
+ * pass the form data //// * $(this).serialize() - to easily read form data //// *
+ * function(data){... - data contains the response from post_receiver.php ////
+ */
+//				
+//	         
+// // $.post('../controller/CreateUserControler.php', $(this).serialize(),
+// function(data){
+//
+//
+//	        	
+// // // show the response
+//	            
+// // $('#response').html(data);
+//	             
+// // }).fail(function() {
+//	         
+// // // just in case posting your form failed
+// // alert( "Posting failed." );
+//	             
+// // });
+//	 
+// // // to prevent refreshing the whole page page
+// // return false;
+//	 
+// // });
+// //});
+
+
+
+
+
+
+
+

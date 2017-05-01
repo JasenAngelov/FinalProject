@@ -3,12 +3,20 @@ session_start ();
 function __autoload($className) {
 	require_once '../model/' . $className . ".php";
 }
-// $check = new Control_functions ();
-// $check->Check_connection_protocol ();
-// $check->Check_session_time ();
+$check = new Control_functions ();
+$check->Check_connection_protocol ();
+$check->Check_session_time ();
+$check->IssAdminLoged ();
+
+$currencyes = $check->getCurrencyNames();
 
 define ( 'ADMIN_HEADER', TRUE );
 define ( 'ADMIN_FOOTER', TRUE );
+
+if (isset($_SESSION ['responseMSG'])) {
+	$response = $_SESSION ['responseMSG'];
+	unset($_SESSION ['responseMSG']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -37,26 +45,11 @@ define ( 'ADMIN_FOOTER', TRUE );
 <body>
 
 <?php
-include './header.php';
+include './adminHeader.php';
 ?>
-<div class="corpCont" id="container_response" style="display: none">
-			<div id="content" class="clearfix">
-				<div id="main" role="main" class="middle">
-					<section class="result">
-						<div id="Payment" class="pmt_wrap">
-							<div id="m_ctrl_Page" class="pmt_doc_wrap">
-								
-								<div class="pmt_footer clearfix">
-									<a href="./create-user.php" class="back"><span>Създай нов клиент</span></a>
-									<a id="btnSave" class="save" href="" onclick="finalCheck();"><span>Затвори</span></a>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
-	<form id="create_Form" method="post" style="margin: 0px" action="">
+
+	<form id="create_Form" method="post" style="margin: 0px"
+		action="../controller/CreateUserControler.php">
 		<div class="corpCont" id="container">
 			<div id="content" class="clearfix">
 				<div id="main" role="main" class="middle">
@@ -136,25 +129,31 @@ include './header.php';
 									<div class="column">
 										<label for="Document_Amount"> Сума за захранване <span>*</span></label><input
 											class="bind inputedit input-validation-margin"
-											id="Document_Amount" maxlength="14" name="Document.Amount"
+											id="initial_amount" maxlength="14" name="initial_amount"
 											size="15" type="text" value="0.00">
 										<div>
-											<span class="field-validation-valid"
-												data-valmsg-for="Document.Amount" data-valmsg-replace="true"></span>
+											<input type="hidden" name="valid_req" value="true"
+												id="bankusername" />
 										</div>
 									</div>
 									<div class="column">
 										<label> Валута <span>*</span></label><select
-											class="bind  input-validation-margin" id="Document_RINGS"
-											name="Document.RINGS" size="1">
-											<option selected="selected" value="1">БИСЕРА</option>
-											<option value="2">РИНГС</option>
+											class="bind  input-validation-margin" id="currency_id"
+											name="currency_id" size="1">
+											<?php 
+												if (is_array($currencyes)) {
+													foreach ($currencyes as $key => $value){
+														echo "<option value='".$key."'>$value</option>";
+													}
+												}
+											
+											?>											
 										</select>
 									</div>
 								</fieldset>
 								<div class="pmt_footer clearfix">
 									<a href="./create-user.php" class="back"><span>Изчисти</span></a>
-									<a id="btnSave" class="save" href="" onclick="finalCheck();"><span>Създай</span></a>
+									<a id="btnSave" class="save" onclick="finalCheck();"><span>Създай</span></a>
 								</div>
 							</div>
 						</div>
@@ -164,41 +163,9 @@ include './header.php';
 		</div>
 	
 <?php
-include './Footer.php';
+// include './Footer.php';
 ?>	
 <script type="text/javascript" src="./assets/js/ajax.js"></script>
-		<script>
-$(document).ready(function(){
-	 $('#create_Form').submit(function(){
-	     
-	        // show that something is loading
-	        $('#dadada').html("<b>Loading response...</b>");
-	         
-	        /*
-	         * 'post_receiver.php' - where you will pass the form data
-	         * $(this).serialize() - to easily read form data
-	         * function(data){... - data contains the response from post_receiver.php
-	         */
-	        $.post('../controller/CreateUserControler.php',{ fields : $(this).serialize()}, function(data){
-	             
-	            // show the response
-	            
-	            $('#response').html(data);
-	             
-	        }).fail(function() {
-	         
-	            // just in case posting your form failed
-	            alert( "Posting failed." );
-	             
-	        });
-	 
-	        // to prevent refreshing the whole page page
-	        return false;
-	 
-	    });
-});
-</script>
-
 	</form>
 </body>
 </html>

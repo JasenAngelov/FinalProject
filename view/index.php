@@ -641,9 +641,7 @@
 								<fieldset>
 									<legend class="visuallyhidden">Вход Буркан Plus</legend>
 									<label for="bankusername">Потребителско име</label> <input
-										type="text" name="userName" value="" id="bankusername" /> <input
-										type="hidden" name="xml_id" value="/bg-BG/.login"
-										id="bankusername" />
+										type="text" name="userName" value="" id="bankusername" /> 
 									<button type="submit" class="btn btn-yellow">Вход</button>
 									<div class="fr"></div>
 									<a href="./admin-login.php" target="_blank" title="Вход за служители на банката" class="btn btn-outline">Вход за служители</a>

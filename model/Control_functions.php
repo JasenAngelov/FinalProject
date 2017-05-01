@@ -29,6 +29,22 @@ class Control_functions {
 		}
 	}
 	
+	public function Admin_check_session_time(){
+		if (isset($_SESSION['logged_in_time']) && (time() - $_SESSION['logged_in_time']) < 1800){
+			session_regenerate_id();
+			
+			$_SESSION['logged_in_time'] = time();
+		}else {
+			session_destroy();
+			
+			session_start();
+			$_SESSION ['error'] = 'Изтекла  Сесия!';
+			http_response_code ( 403 );
+			header ( "Location: ../view/admin-login.php" );
+			exit ();
+		}
+	}
+	
 	
 	
 	
@@ -52,8 +68,17 @@ class Control_functions {
 		$currencies = array_values($currencies);
 		return array_search($currency, $currencies) + 1;
 	}
-	
-	
+	public function IssAdminLoged(){
+		if (!isset($_SESSION['admin_log']) && !$_SESSION['admin_log']){
+			die('Моля влезте в профила си!');
+		}
+		
+	}
+	public function getCurrencyNames(){
+		$currencies = array_unique($this->currencies);
+		$currencies = array_values($currencies);
+		return $currencies;
+	}
 	
 }
 

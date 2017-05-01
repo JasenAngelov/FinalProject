@@ -14,9 +14,9 @@ function __autoload($className) {
 $check = new Control_functions ();
 $check->Check_connection_protocol ();
 
-$_POST ['userName'] = "Dobriaa123";
-$_POST ['pwd'] = "772517";
-$_POST ['submit'] = true;
+// $_POST ['userName'] = "Dobriaa123";
+// $_POST ['pwd'] = "772517";
+// $_POST ['submit'] = true;
 
 try {
 	$error = '';
@@ -28,7 +28,7 @@ try {
 			$userpass = htmlentities ( trim ( $_POST ['pwd'] ) );
 			$key = $username . $userpass;
 			
-			//Първоначална проверка на данните (Прави запитване до DB за конкретен username, ако такъв съществува му взема хешираната парола)
+			// Първоначална проверка на данните (Прави запитване до DB за конкретен username, ако такъв съществува му взема хешираната парола)
 			
 			if (isset ( $username )) {
 				$dao = new LoginDAO ();
