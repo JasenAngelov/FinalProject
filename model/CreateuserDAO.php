@@ -1,7 +1,7 @@
 <?php
-function __autoload($className) {
-	require_once '../model/' . $className . ".php";
-}
+// function __autoload($className) {
+// 	require_once '../model/' . $className . ".php";
+// }
 class CreateuserDAO {
 	private $db;
 	
@@ -97,8 +97,8 @@ class CreateuserDAO {
 		}
 	}
 }
-$us = new CreateuserDAO();
-$us->create_user('Dobri', 'Ivanov', 'Dobraai@abv.bg', '0144100', 'Dobriaa123', '772517', 'BGN', '150');
+// $us = new CreateuserDAO();
+// $us->create_user('Dobri', 'Ivanov', 'Dobraai@abv.bg', '0144100', 'Dobriaa123', '772517', 'BGN', '150');
 
 
 

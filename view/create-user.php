@@ -3,15 +3,13 @@ session_start ();
 function __autoload($className) {
 	require_once '../model/' . $className . ".php";
 }
-$check = new Control_functions ();
-$check->Check_connection_protocol ();
-$check->Check_session_time ();
+// $check = new Control_functions ();
+// $check->Check_connection_protocol ();
+// $check->Check_session_time ();
 
-$account_info = $_SESSION ['account'];
-$transaction_info = $_SESSION ['transaction'];
-$tech_info = $_SESSION ['tech_info'];
-define ( 'Footer', TRUE );
-define ( 'header', TRUE );
+define ( 'ADMIN_HEADER', TRUE );
+define ( 'ADMIN_FOOTER', TRUE );
+
 ?>
 <!DOCTYPE html>
 <html>

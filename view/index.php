@@ -646,7 +646,7 @@
 										id="bankusername" />
 									<button type="submit" class="btn btn-yellow">Вход</button>
 									<div class="fr"></div>
-
+									<a href="./admin-login.php" target="_blank" title="Вход за служители на банката" class="btn btn-outline">Вход за служители</a>
 								</fieldset>
 							</form>
 						</div>
@@ -654,10 +654,7 @@
 				</div>
 				<div class="footer-bottom">
 					<div class="wrapper clearfix">
-						<span class="copyright">Буркан Банк България. </span> <span
-							class="studiox">Уеб сайт от: <a
-							href="https://github.com/JasenAngelov/FinalProject.git"
-							title="Studio X" target="_blank">Jsen Angelov</a></span>
+						
 					</div>
 				</div>
 			</div>
