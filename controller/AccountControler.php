@@ -45,14 +45,13 @@ try {
 					$_SESSION ['logged_in_time'] = time ();
 					
 					$accounts = $dao->request_info ( $info->username, $info->password, $key );
-					$_SESSION ['account'] = $accounts [0];
-					$perfix = $accounts [0]->perfix;
-					$iban = $accounts [0]->rawIban;
+					$_SESSION ['account'] = $accounts [0];					
+					$iban = $accounts->IBAN;
 					
 					// Създаване на обект, съдържащ информация за транзакциите на клиента (Ако клиента няма транзакции връща folse)
 					
 					$dao = new TransactionDAO ();
-					$transactions = $dao->transaction_history ( $iban, $key, $perfix );
+					$transactions = $dao->transaction_history ( $iban );
 					$_SESSION ['transaction'] = $transactions;
 				} else {
 					$error = "Грешно име или парола!";

@@ -18,16 +18,17 @@ if (isset($_POST ['valid_req']) && isset($_SESSION['account'])) {
 	$tInfo = new stdClass ();
 	foreach ( $_POST as $key => $value ) {
 		$tInfo->$key = htmlentities ( trim ( $value) );
-	}
+	}	
 	
-	
-	
-	if ($account->IBAN === $tInfo->PayerIBAN && is_numeric($tInfo->Amount) && $tInfo->Amount > 0 ) {
+	if ($account->IBAN === $tInfo->PayerIBAN && is_numeric($tInfo->Amount) && $tInfo->Amount > 0 ) {		
+		
+		$name =  $tInfo->payee_fName ." ".$tInfo->payee_lName; 
+		
+		$dao = new TransactionDAO();		
+		$result = $dao->createTransaction($tInfo->Amount, $tInfo->recipientIBAN, $tInfo->reason, $name, $tInfo->Type, $tInfo->aditional_reason);
 		
 		
-		$dao = new TransactionDAO();
-		$result = $dao->createTransaction($tInfo->recipientIBAN, $tInfo->Amount);
-		var_dump( $result);
+		
 		
 	}else {
 		echo 'Моля проверете си входните данни!';
