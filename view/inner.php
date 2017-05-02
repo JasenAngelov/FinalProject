@@ -12,6 +12,8 @@ $transaction_info = $_SESSION ['transaction'];
 $tech_info = $_SESSION ['tech_info'];
 define ( 'Footer', TRUE );
 define ( 'header', TRUE );
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +72,7 @@ define ( 'header', TRUE );
 						<thead class="movements">
 							<tr>
 								<th class="caption"><span>Последни движения</span></th>
-								<th>Референция</th>
+								<th>Получен превод от </th>
 								<th>Основание</th>
 								<th>Дата</th>
 								<th class="amt">Сума</th>
@@ -83,12 +85,12 @@ define ( 'header', TRUE );
 									
 									foreach ( $transaction_info as $info ) {
 										echo '<tr class="bg0">';
-										echo "<td>" . $info->sender_iban . "</td>";
-										echo "<td>" . $info->reference_id . "</td>";
-										echo "<td>Получен превод от " . $info->recipient_name . "</td>";
-										echo "<td>" . $info->date . "</td>";
-										echo "<td class='amt incoming'>" . $info->sum . "</td>";
-										echo "<td style='width: 20px;'>" . $info->date . "</td>";
+										echo "<td>" . $info->recipientIban. "</td>";
+										echo "<td>" . $info->recipient_name. "</td>";
+										echo "<td>" . $info->reason. "</td>";
+										echo "<td>" . $info->Date . "</td>";
+										echo "<td class='amt incoming'>" . $info->Sum. "</td>";
+										echo "<td style='width: 20px;'>" . $info->Type. "</td>";
 										echo "</tr>";
 									}
 								} else {

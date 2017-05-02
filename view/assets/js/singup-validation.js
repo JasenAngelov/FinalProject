@@ -169,38 +169,57 @@ function finalCheck() {
 	}
 }
 // -=-=-=-=-=-=--=---=-= Finale check before sublith END
+function checkIfempty(){
+	
+}
+
+
 // =-=-=-=-=-=-=--=-=-==-=-=\\
 
-/*
- * ////$(document).ready(function(){ //// $('#create_Form').submit(function(){ //
- * //// // show that something is loading //// $('#dadada').html("<b>Loading
- * response...</b>"); // //// /* //// * 'post_receiver.php' - where you will
- * pass the form data //// * $(this).serialize() - to easily read form data //// *
- * function(data){... - data contains the response from post_receiver.php ////
- */
-//				
-//	         
-// // $.post('../controller/CreateUserControler.php', $(this).serialize(),
-// function(data){
-//
-//
-//	        	
-// // // show the response
-//	            
-// // $('#response').html(data);
-//	             
-// // }).fail(function() {
-//	         
-// // // just in case posting your form failed
-// // alert( "Posting failed." );
-//	             
-// // });
-//	 
-// // // to prevent refreshing the whole page page
-// // return false;
-//	 
-// // });
-// //});
+
+function submit(){ 
+	var flag = true
+	 if ( !fieldCheck('#PayerName')) {
+		flag = false
+	}
+	 if ( !fieldCheck('#PayerIBAN')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#payee_fName')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#recipientIBAN')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#Document_PayeeBICName')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#Amount')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#Document_CCY')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#Type')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#reason')) {
+			flag = false
+		}
+	 if ( !fieldCheck('#aditional_reason')) {
+			flag = false
+		}
+	
+	
+	if (flag) {
+		document.getElementById('m_Form').submit();
+	}else{
+		alert("Всички полета са задължителни!");
+	}	
+}
+	 
+ 
+ 
 
 
 

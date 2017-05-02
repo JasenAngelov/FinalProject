@@ -15,8 +15,7 @@ if (! defined ( 'header' )) {
 	<div class="corpCont" id="container">
 		<header id="head">
 			<div class="wrap clearfix">
-				<a class="logo" href=""><img src="./assets/images/logo.png"
-					alt="Burkan Home"></a>
+				
 				<nav id="service-area">
 					
 					<ul class="welcome">

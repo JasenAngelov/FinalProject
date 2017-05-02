@@ -31,6 +31,7 @@ define ( 'header', TRUE );
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 <link type="text/css" rel="stylesheet" href="./assets/css/login.css">
 <link href="./assets/css/preloader.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <?php
@@ -52,8 +53,8 @@ include './header.php';
 									<p class="note">Избери сметка на наредител</p>
 									<div class="row" style="width: 500px">
 										<select class="bind inputedit" id="user_acc" name="user_acc"
-											tabindex="-1" onchange="dataQery()">
-											<option selected="selected" value="none"></option>
+											tabindex="-1" onchange="dataQery()" >
+											<option selected="selected" value=""></option>
 											 <?php
 												if (is_array ( $account_info )) {
 													foreach ( $account_info as $key => $value ) {
@@ -105,7 +106,7 @@ include './header.php';
 										</div>
 										<label> Име на банката на получателя </label><input
 											class="bind inputro input-validation-margin"
-											data-helper-payee="BICName" id="Document_PayeeBICName"
+											 id="Document_PayeeBICName"
 											name="Document.PayeeBICName" size="40" tabindex="-1"
 											type="text" value="">
 
@@ -155,10 +156,9 @@ include './header.php';
 									</div>
 								</fieldset>
 								<div class="pmt_footer clearfix">
-									<a href="" class="back"><span>Назад</span></a><span
-										id="btnSaveAndSend" class="savesend"><input type="submit"
-										value="Запиши и изпрати" /></span> <a href="#" id="btnSave"
-										class="save"><span>Запази</span></a>
+									<a href="./inner.php" class="back"><span>Назад</span></a><span
+										id="btnSaveAndSend" class="savesend"></span> <a onclick="submit()" id="btnSave"
+										class="save"><span>Изпрати</span></a>
 								</div>
 							</div>
 						</div>
@@ -170,7 +170,11 @@ include './header.php';
 <?php
 include './Footer.php';
 ?>	
+
 <script type="text/javascript" src="./assets/js/ajax.js"></script>
+<script type="text/javascript" src="./assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./assets/js/jquery.mmenu.min.all.js"></script>
+<script type="text/javascript" src="./assets/js/singup-validation.js"></script>
 	</form>
 </body>
 </html>

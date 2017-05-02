@@ -8,10 +8,11 @@ class TransactionDAO {
 		$this->db = DBConnection::getDb ();
 	}
 	public function transaction_history($iban) {		
+		
 		$key = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\key.txt');
 		$iv = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\iv.txt');
 		
-		$ecnIban = openssl_decrypt($iban, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+		$ecnIban = openssl_encrypt($iban, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
 		
 		$pstmt = $this->db->prepare ( self::GET_ALL_TRANSACTIONS_SQL );
 		
@@ -20,27 +21,28 @@ class TransactionDAO {
 				$ecnIban
 		) );
 		
-		$accounts = $pstmt->fetchAll ( PDO::FETCH_NUM );
+		$accounts = $pstmt->fetchAll (PDO::FETCH_NUM);
 		$result = array ();
 		
-		foreach ( $accounts as $key => $account ) {
-			
-			$result [$key] = new Transactions ( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5], $account [6], $account [7], $account [8] );
+		foreach ( $accounts as $account ) {			
+		
+			$result [] = new Transactions ( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5], $account [6], $account [7], $account [8] );
 		}
-		if (is_array( $result )) {
+		
+		if (! empty( $result )) {
 			return $result;
 		} else {
 			return "Все още нямате транзакции!";
 		}
 	}
-	public function createTransaction( $sum, $recipientIBAN, $reason, $recipientName, $type, $aditionalReason) {
-		$info = $_SESSION ['account'];
+	public function createTransaction($sendIban ,$sum, $recipientIBAN, $reason, $recipientName, $type, $aditionalReason) {
+		
 		
 		$key = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\key.txt');
 		$iv = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\iv.txt');	
 		
 		
-		$userIBAN = $info->IBAN;
+		$userIBAN = $sendIban;
 		$timestamp = date ( 'Y-m-d H:i:s' );
 		
 		 //Кодиране на входните данни
