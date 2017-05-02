@@ -11,7 +11,7 @@ class Transactions implements JsonSerializable {
 	private $type;
 	public function __construct($refrece, $iban, $date, $sum, $recipientIban, $reason, $aditional_reason, $recipient_name, $type) {
 		$this->IBAN = $this->decode ( $iban );
-		$this->refrece = $this-> $refrece;
+		$this->refrece = $refrece;
 		$this->Date = $this->decode ( $date );
 		$this->Sum = $this->decode ( $sum );
 		$this->recipientIban = $this->decode ( $recipientIban );

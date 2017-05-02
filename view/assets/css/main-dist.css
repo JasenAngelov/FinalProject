@@ -1436,7 +1436,7 @@ table.gsc-search-box td.gsc-input {
 
 .featured-products a .product-text {
 	border-top: 2px solid #fff;
-	background: #007790 url(../images/product-pattern.svg) no-repeat left
+	background: #007790 url() no-repeat left
 		top
 }
 
@@ -3685,7 +3685,7 @@ strong.text-icon {
 }
 
 .main-footer {
-	background: #007790 url(../images/footer-overlay.png) no-repeat center
+	background: #007790 url() no-repeat center
 		top;
 	background-size: cover;
 	padding: 30px 0 0

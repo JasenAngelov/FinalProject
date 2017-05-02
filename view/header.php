@@ -50,7 +50,7 @@ if (! defined ( 'header' )) {
 		<div class="sitepath">
 			<div class="wrap">
 				<div class="path">
-					<a href="">Начало</a>
+					<a href=""><?php echo $message?></a>
 				</div>
 			</div>
 		</div>

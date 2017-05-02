@@ -13,6 +13,13 @@ $tech_info = $_SESSION ['tech_info'];
 define ( 'Footer', TRUE );
 define ( 'header', TRUE );
 
+if (isset($_SESSION['message'])){
+	$message = $_SESSION['message'];
+}else {
+	$message = '';
+}
+
+
 
 ?>
 <!DOCTYPE html>

@@ -44,4 +44,7 @@ class Account implements JsonSerializable {
 		
 		return $value;
 	}
+	public function __set($prop, $value){
+		$this->$prop = $value;
+	}
 }

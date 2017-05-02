@@ -28,10 +28,8 @@ if (isset($_POST ['valid_req']) && isset($_SESSION['account'])) {
 		
 		$dao = new TransactionDAO();		
 		$result = $dao->createTransaction($tInfo->PayerIBAN,$tInfo->Amount, $tInfo->recipientIBAN, $tInfo->reason, $name, $tInfo->Type, $tInfo->aditional_reason);
-		
-		unset($_SESSION['transaction']);		
-		$dao = new TransactionDAO ();
-		$transactions = $dao->transaction_history ( $iban );		
+				
+		$transactions = $dao->transaction_history ( $account->IBAN);		
 		$_SESSION ['transaction'] = $transactions;
 		
 	}else {

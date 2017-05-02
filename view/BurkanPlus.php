@@ -43,7 +43,7 @@ define ( 'Footer', TRUE );
 <link type="image/x-icon"
 	href="https://transact.bacbplus.bg/images/fav2icon.ico" rel="Icon">
 <link type="text/css" rel="stylesheet" href="./assets/css/login.css">
-<link href="./assets/css/preloader.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -58,9 +58,7 @@ define ( 'Footer', TRUE );
 					<section>
 						<div class="login_wrap">
 							<div class="login-container">
-								<div class="login-logo">
-									<img src="./" alt="Burcan Plus">
-								</div>
+								
 								<div class="login-drop">
 									<div class="login-heading">
 										Вход в <strong> Burkan Bank Plus </strong><input type="hidden"
@@ -206,6 +204,6 @@ define ( 'Footer', TRUE );
 		</form>
 	</div>
 	<script type="text/javascript" src="./assets/js/functions.js"></script>
-	<script src="./assets/js/preloader.js"></script>
+	<
 </body>
 </html>
