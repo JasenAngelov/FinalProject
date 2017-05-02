@@ -23,7 +23,7 @@ if (! defined ( 'header' )) {
 							xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <span
 							class="user tooltip"><?php  echo "Здравейте, " . $account_info->first_name;?><label
 							class="show-tooltip-text"> <?php echo "$account_info->first_name $account_info->last_name";?><br></label></span>
-						<span class="ip"> <?php echo "IP $tech_info->ip";?> </span> </control>
+				 		<span class="ip"> <?php echo "IP $tech_info->ip";?> </span> </control>
 						<li><a href="" title="Профил"><img src="./assets/images/user.png"
 								alt="Профил"></a></li>
 						<li><a id="logMeOut" href="../controller/LogoutControler.php"

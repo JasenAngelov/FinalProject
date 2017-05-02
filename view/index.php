@@ -28,37 +28,7 @@
 			<div class="search-bar">
 				<div class="wrapper"></div>
 			</div>
-			<div class="header-inner">
-				<div class="top-bar clearfix">
-					<div class="wrapper">
-						<nav class="clearfix">
-							<ul>
-								<li class="with-tooltip">
-									<div class="phone-icon">
-										<a href="" title="" class="">0700 31 021</a>
-									</div> <span class="tooltip">работно време 08:30 - 17:30</span>
-								</li>
-								<li>
-									<a href="./BurkanPlus.php" target="_blank">
-										<strong>Вход в	Буркан Plus</strong>
-									</a>
-								</li>
-
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="top-bar-back"></div>
-				<div class="wrapper clearfix">
-					<a href="./index.php" class="bacb-logo" title=""><img
-						src="./assets/images/bacb-logo-bg.svg" alt="Буркан Банк" />BBBG</a>
-
-					<!-- Mobile navigation -->
-
-					<a href="#menu" title="menu" class="mobile-menu-btn"></a> <a
-						href="javascript:;" title="search" class="mobile-search-btn"></a>
-				</div>
-			</div>
+			
 		</header>
 		<section class="main-slider">
 			<div id="header-slider" class="owl-carousel owl-theme">
