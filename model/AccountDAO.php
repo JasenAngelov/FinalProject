@@ -21,7 +21,7 @@ FROM users u LEFT JOIN accounts a ON u.id = a.users_id LEFT JOIN currency_type c
 		$result = array ();
 		
 		foreach ( $accounts as $account ) {
-			$result [] = new Account ( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5], $account [6], $account [7]);
+			$result [] = new Account ($account);
 		}
 		if (!empty($result)) {
 			return $result;

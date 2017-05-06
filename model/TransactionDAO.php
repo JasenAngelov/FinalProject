@@ -25,7 +25,7 @@ class TransactionDAO {
 		
 		foreach ( $accounts as $account ) {
 			
-			$result [] = new Transactions ( $account [0], $account [1], $account [2], $account [3], $account [4], $account [5], $account [6], $account [7], $account [8] );
+			$result [] = new Transactions ($account);
 		}
 		
 		if (! empty ( $result )) {

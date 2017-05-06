@@ -7,21 +7,18 @@ class CreateuserDAO {
 	public function __construct() {
 		$this->db = AdminDBconnection::getDb ();
 	}
-	public function create_user($firstName, $lastName, $email, $phone, $loginName, $loginPass, $currency, $balance) {
+	public function create_user($info) {
 		$func = new Control_functions ();
 		
 		$key = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\key.txt');
 		$iv = file_get_contents('C:\xampp\htdocs\FinalProject\db__credentials\iv.txt');	
 		
+		$encInfo = array();
 		
-		$ufirstName = htmlentities ( trim ( $firstName ) );
-		$ulastName = htmlentities ( trim ( $lastName ) );
-		$uemail = htmlentities ( trim ( $email ) );
-		$uphone = htmlentities ( trim ( $phone ) );
-		$username = htmlentities ( trim ( $loginName ) );
-		$userpass = htmlentities ( trim ( $loginPass ) );
-		$ubalance = htmlentities ( trim ( $balance ) );
-		$ucurrency = htmlentities ( trim ( $currency ) );
+		foreach ($info as $value){
+			$strInfo = htmlentities(trim($value));
+			$encInfo[] = openssl_encrypt ( $strInfo, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
+		}
 		
 		
 		$hashLoginName = hash ( 'sha256', $username, true );
@@ -30,13 +27,7 @@ class CreateuserDAO {
 		];
 		$hashPassword = password_hash ( $userpass, PASSWORD_BCRYPT, $options );
 			
-		$encFname = openssl_encrypt ( $ufirstName, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encLname = openssl_encrypt ( $ulastName, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encEmail = openssl_encrypt ( $uemail, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encPhone = openssl_encrypt ( $uphone, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encBalance = openssl_encrypt ( $ubalance, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encCurrency = openssl_encrypt ( $ucurrency, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		
+				
 		// Започване на транзакцията!
 		
 		$this->db->beginTransaction ();

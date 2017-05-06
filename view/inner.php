@@ -96,9 +96,9 @@ if (isset($_SESSION['message'])){
 										echo "<td>" . $info->recipientIban. "</td>";
 										echo "<td>" . $info->recipient_name. "</td>";
 										echo "<td>" . $info->reason. "</td>";
-										echo "<td>" . $info->Date . "</td>";
-										echo "<td class='amt incoming'>" . $info->Sum. "</td>";
-										echo "<td style='width: 20px;'>" . $info->Type. "</td>";
+										echo "<td>" . $info->date . "</td>";
+										echo "<td class='amt incoming'>" . $info->sum. "</td>";
+										echo "<td style='width: 20px;'>" . $info->type. "</td>";
 										echo "</tr>";
 									}
 								} else {

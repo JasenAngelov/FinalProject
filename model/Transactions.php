@@ -7,18 +7,16 @@ class Transactions implements JsonSerializable {
 	private $recipientIban;
 	private $reason;
 	private $aditional_reason;
-	private $recipient_name;	
+	private $recipient_name;
 	private $type;
-	public function __construct($refrece, $iban, $date, $sum, $recipientIban, $reason, $aditional_reason, $recipient_name, $type) {
-		$this->IBAN = $this->decode ( $iban );
-		$this->refrece = $refrece;
-		$this->Date = $this->decode ( $date );
-		$this->Sum = $this->decode ( $sum );
-		$this->recipientIban = $this->decode ( $recipientIban );
-		$this->reason = $this->decode ( $reason );
-		$this->aditional_reason = $this->decode ( $aditional_reason );
-		$this->recipient_name = $this->decode ( $recipient_name );
-		$this->Type = $this->decode ( $type );
+	public function __construct($info) {
+		$key_name = $this->class_keys ();
+		$raw_data = array_combine ( $key_name, $info );
+		
+		foreach ( $raw_data as $key => $value ) {
+			$this->$key = $this->decode ( $value );
+		}
+		$this->refrece = $info [0];
 	}
 	public function jsonSerialize() {
 		return get_object_vars ( $this );
@@ -33,5 +31,8 @@ class Transactions implements JsonSerializable {
 		$value = openssl_decrypt ( $data, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
 		
 		return $value;
+	}
+	private function class_keys() {
+		return array_keys ( get_class_vars ( __CLASS__ ) );
 	}
 }	
