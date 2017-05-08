@@ -8,13 +8,8 @@ class TransactionDAO {
 		$this->db = DBConnection::getDb ();
 	}
 	public function transaction_history($iban) {
-		$key = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\key.txt' );
-		$iv = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\iv.txt' );
-		
-		$ecnIban = openssl_encrypt ( $iban, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		
+		$ecnIban = $this->encrypt ( $iban );
 		$pstmt = $this->db->prepare ( self::GET_ALL_TRANSACTIONS_SQL );
-		
 		$pstmt->execute ( array (
 				$ecnIban,
 				$ecnIban 
@@ -25,7 +20,7 @@ class TransactionDAO {
 		
 		foreach ( $accounts as $account ) {
 			
-			$result [] = new Transactions ($account);
+			$result [] = new Transactions ( $account );
 		}
 		
 		if (! empty ( $result )) {
@@ -34,70 +29,88 @@ class TransactionDAO {
 			return "Все още нямате транзакции!";
 		}
 	}
-	public function createTransaction($sendIban, $sum, $recipientIBAN, $reason, $recipientName, $type, $aditionalReason) {
-		$accOnfo = $_SESSION ['account'];
-		$currentBalance = $accOnfo->balance;
-		$id = $accOnfo->id;
+	
+	public function createTransaction($info) {
+		$accInfo = $_SESSION ['account'];
+		$currentBalance = $accInfo->balance;
+		$id = $accInfo->id;		
+		$updatedBalance = $currentBalance - $sum;
+		$encUdatedBalance = $this->encrypt($updatedBalance);
 		
-		$key = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\key.txt' );
-		$iv = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\iv.txt' );
-		
-		$userIBAN = $sendIban;
-		$timestamp = date ( 'Y-m-d H:i:s' );
+		$encInfo = array();
 		
 		// Кодиране на входните данни
 		
-		$encSenderIBAN = openssl_encrypt ( $userIBAN, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encTimestamp = openssl_encrypt ( $timestamp, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encSUM = openssl_encrypt ( $sum, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encRecipientIBAN = openssl_encrypt ( $recipientIBAN, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encReason = openssl_encrypt ( $reason, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encAditionalReason = ($aditionalReason === '') ? null : openssl_encrypt ( $aditionalReason, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encRecipientName = openssl_encrypt ( $recipientName, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-		$encType = openssl_encrypt ( $type, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
+		foreach ($info as $value){
+			if (!empty($value)){
+			$encInfo[] = $this->encrypt($value);
+			}else {
+				$encInfo[] = null;
+			}
+		}
+			
+		/* Входните данни са подредени както следва:
+		 * 
+		 * $encInfo[0] - IBAN на наредителя.
+		 * $encInfo[1] - Дата и час.
+		 * $encInfo[2] - Сума на транзакцията.
+		 * $encInfo[3] - IBAN на получателят.
+		 * $encInfo[4] - Основание за превод.
+		 * $encInfo[5] - Допълнително основание за превод.
+		 * $encInfo[6] - Имена на получателя (Първо и Фамилно, разделени с разстояние).
+		 * $encInfo[7] - Тип на транзакцията (РИНГС, БИСЕРНА).
+		 */
+	
+		
+				
+		
 		
 		$updatedBalance = $currentBalance - $sum;
 		if ($updatedBalance > 0) {
 			
 			$this->db->beginTransaction ();
 			
+			//Създаване на нова транзакция
+			
 			$pstmt = $this->db->prepare ( self::MAKE_TRANSACTION_SQL );
-			$pstmt->execute ( array (
-					$encSenderIBAN,
-					$encTimestamp,
-					$encSUM,
-					$encRecipientIBAN,
-					$encReason,
-					$encAditionalReason,
-					$encRecipientName,
-					$encType 
-			) );
+			$pstmt->execute ( $encInfo );
 			
-			$updatedBalance = $currentBalance - $sum;
-			$encUdatedBalance = openssl_encrypt ( $updatedBalance, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
-			$pstmt = $this->db->prepare ( self::UPDATE_BALLANCE_SQL );
-			
+			/*Осъвременяване на баланса на клиента (Тъй като баланса е в кодирана форма на DB сървъра, не мо же да се използва аритметика в реално време.
+			 * вероятно е по-добре баланса да не се кодира, за да може да се обработва в DB).
+			 */
+						
+			$pstmt = $this->db->prepare ( self::UPDATE_BALLANCE_SQL );			
 			$pstmt->execute ( array (
 					$encUdatedBalance,
 					$id 
 			) );
 			
 			$result = $this->db->commit ();
-		}else {
+						
+			
+		} else {
 			$result = false;
 		}
 		$_SESSION ['account']->balance = $updatedBalance;
 		if ($result) {
-			$_SESSION['message'] = 'Успешно направихте плащане!';
+			$_SESSION ['message'] = 'Успешно направихте плащане!';
 			http_response_code ( 200 );
 			header ( "Location: ../view/inner.php" );
 			exit ();
 		} else {
-			$_SESSION['message'] = 'Имаше проблем с ранзакцията!';
+			$_SESSION ['message'] = 'Имаше проблем с ранзакцията!';
 			http_response_code ( 403 );
 			header ( "Location: ../view/inner.php" );
 			exit ();
 		}
+	}
+	private function encrypt($data) {
+		$key = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\key.txt' );
+		$iv = file_get_contents ( 'C:\xampp\htdocs\FinalProject\db__credentials\iv.txt' );
+		
+		$value = openssl_encrypt ( $data, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv );
+		
+		return $value;
 	}
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 session_start ();
 function __autoload($className) {
 	require_once '../model/' . $className . ".php";
@@ -13,17 +14,33 @@ try {
 		
 		// Създаване на обект от масива POST за по-лесна обработка на данните
 		
-		$info = new stdClass ();
+		$class = new stdClass ();
 		foreach ( $_POST as $key => $value ) {
-			$info->$key = $value;
+			$class->$key = htmlentities(trim($value));
 		}
 		
 		// Проверка на валидността на паролата и името
 		
-		if (($info->username === $info->username_check) && ($info->pass === $info->pass_check) && $info->initial_amount >= 0) {
+		if (($class->username === $class->username_check) && ($class->pass === $class->pass_check) && $class->initial_amount >= 0) {
 			
 			$dao = new CreateuserDAO ();
-			$result = $dao->create_user ( $info->first_name, $info->last_name, $info->client_email, $info->client_phone, $info->username, $info->pass, $info->currency_id, $info->initial_amount );
+			/* Данните в $info трябва да са подредени както следва:
+			 * 
+			 * 
+			 * $info[0] - Първо име.
+			 * $info[1] - Фамилно име.
+			 * $info[2] - E-mail.
+			 * $info[3] - Телефон.
+			 * $info[4] - Име за достъп.
+			 * $info[5] - Парола.
+			 * $info[6] - Първоначална сума.
+			 * $info[7] - Вид на валутата.			 	
+			 */
+			
+			$info = array($class->first_name, $class->last_name, $class->client_email, $class->client_phone, $class->username, $class->pass, $class->initial_amount, $class->currency_id);
+			
+			
+			$result = $dao->create_user ( $info );
 			
 			if ($result) {				
 				$_SESSION ['responseMSG'] = "Успешно създадохте нов Клиент!";
